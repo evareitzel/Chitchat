@@ -11,14 +11,16 @@ export default function CreateAccouont({ onLogin }){
   }
 
   return (
-    <form>
-      <label></label>
-      <input />
-      <label></label>
-      <input />
-      <label></label>
-      <input />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form>
+        <label></label>
+        <input />
+        <label></label>
+        <input />
+        <label></label>
+        <input />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   )
 }
