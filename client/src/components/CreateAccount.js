@@ -11,7 +11,6 @@ export default function CreateAccouont({ onLogin }){
   }
 
   return (
-    <>
       <form>
         <label></label>
         <input />
@@ -21,6 +20,5 @@ export default function CreateAccouont({ onLogin }){
         <input />
         <button type="submit">Submit</button>
       </form>
-    </>
   )
 }
