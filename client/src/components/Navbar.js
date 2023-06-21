@@ -13,10 +13,8 @@ export default function Navbar({ onLogout }) {
       <header className="App-header">
         <h1>🗪 chitchat</h1>
         <button onClick={handleLogout}>Logout</button>
-        {/* <a className="App-link"></a> */}
-        {/* <Login /> */}
-      {/* </routes> */}
-      {/* <routes> */}
       </header>
   )
 }
+
+// <a className="App-link"></a>
