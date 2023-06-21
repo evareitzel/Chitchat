@@ -14,9 +14,9 @@ function NavBar({ user, onLogout }) {
   return (
     <Router>
       <nav>
-        <Link to="/">🗪 chitchat</Link>
-        <Link to="/groups">Groups</Link>
-        <button onClick={handleLogout}>Logout</button>
+        <Link to="/" className="App-link">🗪 chitchat</Link>
+        <Link to="/groups" className="App-link">Groups</Link>
+        <button onClick={handleLogout} className="Ghost-button">Logout</button>
       </nav>
       <Routes>
         <Route path="/" element={<Home user={user}/>} /> 
