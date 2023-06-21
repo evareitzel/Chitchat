@@ -1,4 +1,4 @@
-export default function Home({ user }) {
+function Home({ user }) {
   return(
     <div>
       <h2>Homepage</h2>
@@ -7,4 +7,4 @@ export default function Home({ user }) {
   )
 }
 
-// export default Home
+export default Home

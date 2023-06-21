@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom"
+// import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './App.css'
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
+import Header from './components/Header'
 
-import Home from './pages/Home'
-import Groups from './pages/Groups'
-import Group from './pages/Group'
-import Error from './pages/Error'
+import Login from './pages/Login'
+// import Navbar from './components/Navbar'
+
+// import Home from './pages/Home'
+// import Groups from './pages/Groups'
+// import Group from './pages/Group'
+// import Error from './pages/Error'
 
 function App() {
   const [user, setUser] = useState(null)
-  console.log(user)
 
   useEffect(() => {
     // auto-login
@@ -24,8 +25,13 @@ function App() {
 
   if (user) {
     return (
-      <> {/* className="App" */}
-        <Router>
+      <>
+        <Header user={user} />
+      </>
+      )
+      {/* className="App" */}
+        {/* <Main /> */}
+        {/* <Router> */}
 
         {/* <header className="App-header">
         <h1>🗪 chitchat</h1>
@@ -33,32 +39,25 @@ function App() {
       </header> */}
       {/* onClick={handleLogout} */}
 
-          <nav>
+          {/* <nav>
             <Link to="/">🗪 chitchat</Link>
             <Link to="/groups">Groups</Link>
-            {/* <Link to="/group">Logout</Link> */}
           </nav>
           <Routes>
             <Route path="/" element={<Home user={user} />} />
             <Route path="/groups" element={<Groups />} />
-            {/* <Route path="/group" element={<Group />} /> */}
             <Route path="*" element={<Error />} />
           </Routes>
-        </Router>
+        </Router> */}
 
         {/* <Navbar onLogout={() => setUser(null)}/> */}
         {/* <h2>Welcome, {user.username}!</h2> */}
-      </>
-    )
+      {/* </> */}
+    
   } else {
     return (
       <>
-        {/* <Header />
-        <Main /> */}
-
-
-
-        <Login onLogin={user => setUser(user.id)} />
+        <Login onLogin={user => setUser(user)} /> {/* user.id */}
         {/* <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -73,4 +72,4 @@ function App() {
 
 }
 
-export default App;
+export default App
