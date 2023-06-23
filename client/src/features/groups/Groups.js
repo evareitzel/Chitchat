@@ -1,10 +1,13 @@
-function Groups() {
+import Group from "./Group"
 
+function Groups({ groups }) {
   return(
-    <div>
-      <h2>Groups</h2>
+    <ul>
       {/* {render_groups} */}
-    </div>
+      {groups.map(g => (
+        <Group key={g.id} group={g} />
+      ))}
+    </ul>
   )
 }
 

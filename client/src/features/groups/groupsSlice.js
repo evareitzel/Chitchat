@@ -6,7 +6,10 @@ createSlice({
   initialState: {
     entities: [],
   },
-  reducers: {},
+  reducers: {
+    // add reducers here
+  },
 });
 
+// export reducers here
 export default groupsSlice.reducer;
