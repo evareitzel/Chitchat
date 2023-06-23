@@ -1,11 +1,19 @@
-import { useSelector, useDispatch } from "react-redux"
-import Groups from "./Groups"
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import Groups from "./Groups"
 
 function GroupsContainer() {
   const groups = useSelector(state => state.groups) // .entities)
 
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    fetch('/groups')
+    .then(r => r.json())
+    // .then(r => console.log(`Groups: ${r}`))
+    // .then(g => dispatch({type: "SET_GROUPS", groups: g}))
+  }, [])
+
 
   return(
     <>
