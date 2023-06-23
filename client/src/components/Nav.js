@@ -4,7 +4,7 @@ import Groups from '../pages/Groups'
 // import Group from './pages/Group'
 import Error from '../pages/Error'
 
-function NavBar({ user, onLogout }) {
+function Nav({ user, onLogout }) {
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
@@ -26,7 +26,7 @@ function NavBar({ user, onLogout }) {
     </Router>
   )
 }
-export default NavBar
+export default Nav
 
 // <Link to="/group">Logout</Link>
 // <Route path="/group" element={<Group />} />

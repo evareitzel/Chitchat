@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Header from './components/Header'
-// import Main from './components/Main'
+import Nav from './components/Nav'
 import Login from './pages/Login'
 
 function App() {
@@ -18,20 +17,14 @@ function App() {
 
   if (user) {
     return (
-      <>
-        <Header 
-          user={user} 
-          onLogout={() => setUser(null)} 
-        />
-        {/* <Main user={user} /> */}
-      </>
-      )  
+      <main className="Main">
+        <h1>🗪 chitchat</h1>
+        <p>Collaborate on projects</p>
+        <Nav user={user} onLogout={() => setUser(null)} />
+      </main>
+    )  
   } else {
-    return (
-      <>
-        <Login onLogin={user => setUser(user)} />
-      </>
-    )
+    return <Login onLogin={user => setUser(user)} />
   }
 }
 
