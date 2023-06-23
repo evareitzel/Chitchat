@@ -1,3 +1,14 @@
+# To use React Redux with your React app, install it as a dependency:
+
+# If you use npm:
+npm install react-redux
+
+# Or if you use Yarn:
+yarn add react-redux
+
+source: https://www.npmjs.com/package/react-redux
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

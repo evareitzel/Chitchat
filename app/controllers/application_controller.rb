@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
+  # DEV testing
+  # skip_before_action :login, :authenticate
+
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   private
