@@ -1,7 +1,17 @@
-function Message() {
+import { useDispatch } from "react-redux"
+import { messageRemoved } from "./messagesSlice"
+
+function Message({ message }) {
+  const dispatch = useDispatch()
+
+  function handleDeleteClick() {
+    dispatch(messageRemoved(message.id))
+  }
+
   return(
     <div>
-      <h2>Message</h2>
+      <li>{message.comment}</li>
+      <button onClick={handleDeleteClick}>Delete</button>
     </div>
   )
 }
