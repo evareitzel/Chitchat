@@ -1,11 +1,12 @@
-function Messages() {
+import Message from "./Message"
 
-
+function Messages({ messages }) {
   return(
-    <div>
-      <h2>Messages</h2>
-      {/* {render_messages} */}
-    </div>
+    <ul>
+      {messages.map(m => (
+        <Message key={m.id} message={m} />
+      ))}
+    </ul>
   )
 }
 
