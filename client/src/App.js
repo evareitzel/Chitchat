@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Nav from './components/Nav'
 // import Login from './pages/Login'
+// import configureStore from '../configureStore'
+// const store = configureStore()
 
 function App() {
   // const [user, setUser] = useState(null)
@@ -14,6 +16,11 @@ function App() {
     .then(r => r.json())
     .then(r => console.log(`Users: ${r}`))
   }, [])
+
+  // console.log('hi!')
+  fetch('/groups')
+  .then(r => r.json())
+  .then(r => console.log(r))
 
   // end DEV testing --]
 
