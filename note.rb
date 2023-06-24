@@ -41,3 +41,15 @@ package.json (v1)
     ]
   }
 }
+
+
+# /// physical therapy student ex
+
+# store 
+# configStore()
+#  - slices
+#   - dispatch routes loading fetch es
+# dispatch - GET request
+
+# - Get USER
+# - ONE reducer

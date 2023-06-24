@@ -14,7 +14,6 @@ function GroupsContainer() {
   return(
     <div>
       <p>src/features/groups/Groups</p>
-
       {groups.list.length === 0 ? 'Loading...' : <Groups groups={groups} />}
     </div>
   )
