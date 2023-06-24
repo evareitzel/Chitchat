@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 // import { useSelector } from "react-redux"
 // import { selectUser } from "./userSlice"
 import './App.css'
@@ -11,7 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header /> */}
       <NavBar />
       <Main />
     </div>
