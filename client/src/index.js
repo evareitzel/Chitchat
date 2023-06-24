@@ -1,26 +1,19 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './index.css' // ?
+import './index.css'
 import App from './App'
 
+import { BrowserRouter as Router } from "react-router-dom"
 import { Provider } from "react-redux"
 import store from "./store"
-import { applyMiddleware } from "redux" 
-import thunkMiddleware from "redux-thunk"
-import { composeWithDevTools } from "redux-devtools-extension"
-import { BrowserRouter as Router } from "react-router-dom"
-// import groupsReducer from './features/groups/groupsSlice.jsx'
-
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
-// const store = createStore(groupsReducer) // , applyMiddleware(thunkMiddleware))
 
 render(
-  // <React.StrictMode>
-    <Provider store={store}>
-      <Router>
+  <React.StrictMode>
+    <Router>
+      <Provider store={store}>
         <App />
-      </Router>
-    </Provider>,
-  // </React.StrictMode>,
+      </Provider>
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
