@@ -1,7 +1,7 @@
 import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
 
-export default function Login({ onLogin }) {
+function Login({ onLogin }) {
 
   return(
     <>
@@ -10,3 +10,5 @@ export default function Login({ onLogin }) {
     </>
   )
 }
+
+export default Login

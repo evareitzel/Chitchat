@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { selectUser } from "../features/user/userSlice"
 import LogoutButton from "./LogoutButton"
 
-function NavBar () {
+function NavBar() {
   const user = useSelector(selectUser)
   console.log(user)
 
@@ -20,7 +20,9 @@ function NavBar () {
         <NavLink to="/groups" className="App-link">
           Groups
         </NavLink>
-        {user ? <LogoutButton /> : "" }
+        <NavLink to="/login" className="App-link">
+          Login</NavLink>
+        {user ? <LogoutButton /> : ""}
       </nav>
     </navbar>
   )
