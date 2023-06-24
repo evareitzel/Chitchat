@@ -3,9 +3,11 @@
 import { useDispatch, useSelector } from "react-redux" // cnnct // useSelector, connect, 
 import { fetchGroups } from "../../actions/groups"
 import Groups from "./Groups"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 
 function GroupsContainer() {
+  // class GroupsContainer extends React.Component {
+
 
   // const groups = useSelector(state => state)
   const groups = useSelector(state => state.groups) // .entities)
@@ -29,10 +31,16 @@ function GroupsContainer() {
   //   // .then(g => dispatch({type: "SET_GROUPS", groups: g}))
   // }, [])
 
+    // if(groups.list.length === 0) {
+    //     return null
+    //   }
+    
   return(
     <div>
       <p>src/features/groups/Groups</p>
-      <Groups groups={groups} />
+      {/* <Groups groups={groups} /> */}
+
+      {groups.list.length === 0 ? 'Loading...' : <Groups groups={groups} />}
     </div>
   )
 }
