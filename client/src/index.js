@@ -9,18 +9,18 @@ import { BrowserRouter as Router } from "react-router-dom"
 import './index.css';
 
 import App from './App';
-import groupsReducer from './features/groups/groupsSlice.jsx'
+// import groupsReducer from './features/groups/groupsSlice.jsx'
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
-const store = createStore(groupsReducer) // , applyMiddleware(thunkMiddleware))
+// const store = createStore(groupsReducer) // , applyMiddleware(thunkMiddleware))
 
 render(
   // <React.StrictMode>
-    <Provider store={store}>
+    // <Provider store={store}>
       <Router>
         <App />
-      </Router>
-    </Provider>,
+      </Router>,
+    // </Provider>,
   // </React.StrictMode>,
   document.getElementById('root')
 );
