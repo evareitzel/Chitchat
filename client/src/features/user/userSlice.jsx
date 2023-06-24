@@ -32,18 +32,22 @@ const userSlice = createSlice({
   },
   reducers: {
   },
-  extraReducers: {
-    [fetchUser.fulfilled](state, action) {
-      state.value = action.payload
-    },
-    [userLogin.fulfilled](state, action) {
-      state.value = action.payload
-    },
+  // extraReducers:  (builder => {
+    // builder
+    // [fetchUser.fulfilled](state, action) {
+    //   .fetchUser.fulfilled,(state, action) {
+
+    //   state.value = action.payload
+    // },
+    // [userLogin.fulfilled](state, action) {
+    //   state.value = action.payload
+    // },
+
     // [userLogout.fulfilled](state, action){},
     // [userSignup.fulfilled](state, action),
     // [userUpdate.fulfilled](state, action) {},
     // [deleteUser.fulfilled](state) {}
-  },
+  // },
 })
 
 export const selectUser = state => {

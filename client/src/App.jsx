@@ -3,11 +3,20 @@ import { useEffect, useState } from 'react'
 // import { selectUser } from "./userSlice"
 import './App.css'
 import React from "react"
-import Header from './components/Header'
+import NavBar from './components/NavBar'
 import Main from './components/Main'
 import Login from './pages/Login'
 
 function App() {
+
+  return (
+    <div className="App">
+      {/* <Header /> */}
+      <NavBar />
+      <Main />
+    </div>
+  )  
+
   // const user = useSelector(selectUser)
 
 
@@ -23,18 +32,18 @@ function App() {
   //   })
   // }, [])
 
-  console.log(user)
+  // console.log(user)
 
-  if (user) {
-    return (
-      <div className="App">
-        <Header user={user} onLogout={() => setUser(null)} className="App-header" />
-        <Main user={user} />
-      </div>
-    )  
-  } else {
-    return <Login onLogin={user => setUser(user)} />
-  }
+  // if (user) {
+    // return (
+    //   <div className="App">
+    //     <Header user={user} onLogout={() => setUser(null)} className="App-header" />
+    //     <Main user={user} />
+    //   </div>
+    // )  
+  // } else {
+    // return <Login onLogin={user => setUser(user)} />
+  // }
 }
 
 export default App

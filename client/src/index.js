@@ -1,14 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom'; // import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-// import store from "./store" //
-import { createStore, applyMiddleware } from "redux" // 
+import React from 'react'
+import { render } from 'react-dom'
+import './index.css' // ?
+import App from './App'
+
+import { Provider } from "react-redux"
+import store from "./store"
+import { applyMiddleware } from "redux" 
 import thunkMiddleware from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { BrowserRouter as Router } from "react-router-dom"
-import './index.css';
-
-import App from './App';
 // import groupsReducer from './features/groups/groupsSlice.jsx'
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
@@ -16,11 +16,11 @@ const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
 
 render(
   // <React.StrictMode>
-    // <Provider store={store}>
+    <Provider store={store}>
       <Router>
         <App />
-      </Router>,
-    // </Provider>,
+      </Router>
+    </Provider>,
   // </React.StrictMode>,
   document.getElementById('root')
 );
