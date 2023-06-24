@@ -12,7 +12,7 @@ function App() {
 
   // [-- DEV testing
   const [user, setUser] = useState({ "id": 1, "username": "Momo" })
-  const [groups, setGroups] = useState([])
+  // const [groups, setGroups] = useState([])
 
   useEffect(() => {
     fetch('/user')
@@ -20,17 +20,17 @@ function App() {
     .then(r => console.log(`Users: ${r}`))
   }, [])
 
-  fetch('/groups')
-  .then(r => r.json())
-  // .then(r => json.parse(json.stringify(r)))
-  // .then(r => console.log(r))
-  .then(r => setGroups(r))
+  // fetch('/groups')
+  // .then(r => r.json())
+  // // .then(r => json.parse(json.stringify(r)))
+  // // .then(r => console.log(r))
+  // .then(r => setGroups(r))
 
 
-  console.log('hi from App.js!')
+  // console.log('hi from App.js!')
   // console.log(user) // logs hardcoded data
-  console.log(`Groups: `)
-  console.log(groups)
+  // console.log(`Groups: `)
+  // console.log(groups)
   // console.log(window.json)
   // console.log(getElementById(1))
 

@@ -1,13 +1,20 @@
 // import { useEffect } from "react" // useDispatch and useEffect not here in Flatiron lab --> came from https://medium.com/swlh/quick-guide-for-fetching-api-data-using-react-redux-and-hooks-with-explanation-10503726bc6b
-import { useSelector } from "react-redux" // useDispatch, 
+
+import { useDispatch, useSelector } from "react-redux" // cnnct // useSelector, connect, 
+import { fetchGroups } from "../../actions/groups"
 import Groups from "./Groups"
+import { useEffect } from "react"
 
 function GroupsContainer() {
-  // undefined
-  const groups = [
-    // {"id": 1, "name": "MON"}, 
-    // {"id": 2, "name": "TUE"}, 
-  ]
+
+  // const groups = useSelector(state => state)
+  const groups = useSelector(state => state.groups) // .entities)
+  // const groups = useSelector(state => state.groups.entities)
+  const dispatch = useDispatch()
+
+  useEffect(() => dispatch(fetchGroups()), [])
+
+  console.log(groups)
   // **********
   // const groups = useSelector(state => state.groups) // .entities) // **** Flatiron uses entities but it breaks my app (?) ****
 
