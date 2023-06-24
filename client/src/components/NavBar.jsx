@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { selectUser } from "./userSlice"
 
-function NavBar({ user, onLogout }) { // user needed?
+
+function NavBar({ onLogout }) { // user needed?
+    const user = useSelector(selectUser)
   
   function handleLogout() {
     fetch("/logout", {
