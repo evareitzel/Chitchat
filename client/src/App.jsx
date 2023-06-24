@@ -1,10 +1,7 @@
-// import { useSelector } from "react-redux"
-// import { selectUser } from "./userSlice"
 import './App.css'
 import React from "react"
 import NavBar from './components/NavBar'
 import Main from './components/Main'
-import Login from './pages/Login'
 
 function App() {
 
@@ -13,7 +10,14 @@ function App() {
       <NavBar />
       <Main />
     </div>
-  )  
+  )
+}
+
+export default App
+
+
+// import { useSelector } from "react-redux"
+// import { selectUser } from "./userSlice"
 
   // const user = useSelector(selectUser)
 
@@ -42,6 +46,3 @@ function App() {
   // } else {
     // return <Login onLogin={user => setUser(user)} />
   // }
-}
-
-export default App
