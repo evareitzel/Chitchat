@@ -1,14 +1,21 @@
-function Home({ user }) {
+import React from "react"
+import { useSelector } from "react-redux"
+import { selectUser } from '../features/user/userSlice'
+import Login from "./Login"
+
+
+function Home() {
+  const user = useSelector(selectUser)
+
+  if (!user) return <Login />
+
   return(
     <div>
-      <h1>Homepage</h1>
-      {/* <h2>Welcome, {user.username}!</h2> */}
-      <h2>Welcome!</h2>
+      <h1>😀 {user.username}</h1>
+
       <h3>Your Groups</h3>
-      {/* { listGroups } */}
       <ul>
-        <li>Group 1</li> {/* make links */}
-        <li>Group 2</li>
+        {user.groups.map (g => <li>{g.name}</li>)}
       </ul>
     </div>
   )

@@ -1,5 +1,5 @@
 {
-  "name": "chitchat-react-client",
+  "name": "react-rails-api-project-template-client",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3000",
@@ -8,18 +8,17 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "axios": "^1.4.0",
-    "babel-jest": "^26.6.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-redux": "^8.1.1",
-    "react-router-dom": "^6.10.0",
-    "react-scripts": "^5.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-horizontal-scrolling": "^0.1.13",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "4.0.3",
     "redux": "^4.2.1",
-    "uuid": "^8.3.2"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "PORT=4000 react-scripts start",
+    "start": "PORT=4001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

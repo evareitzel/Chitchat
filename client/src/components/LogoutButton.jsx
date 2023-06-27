@@ -1,8 +1,8 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, } from "react-redux"
 import { userLogout } from "../features/user/userSlice"
 
-function LogoutButton({user}) {
+function LogoutButton() {
 
   const dispatch = useDispatch()
 
@@ -12,8 +12,7 @@ function LogoutButton({user}) {
 
   return (
     <>
-    <p>Welcome, {user.username}!</p>
-      <button onClick={handleLogoutClick}>
+      <button onClick={handleLogoutClick} className="Ghost-button">
         Logout
       </button>
     </>

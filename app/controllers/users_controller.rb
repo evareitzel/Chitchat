@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   # user can join a group
 
+  # DEV action
   def index
     render json: User.all
   end

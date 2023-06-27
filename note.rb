@@ -56,48 +56,121 @@ package.json (v1)
 
 
 ################################################## PKG JSON
-{
-  "name": "chitchat-react-client",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:3000",
-  "engines": {
-    "node": "16.x"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
-    "axios": "^1.4.0",
-    "babel-jest": "^26.6.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-redux": "^8.1.1",
-    "react-router-dom": "^6.10.0",
-    "react-scripts": "^5.0.1",
-    "redux": "^4.2.1",
-    "uuid": "^8.3.2"
-  },
-  "scripts": {
-    "start": "PORT=4000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
+# {
+#   "name": "chitchat-react-client",
+#   "version": "0.1.0",
+#   "private": true,
+#   "proxy": "http://localhost:3000",
+#   "engines": {
+#     "node": "16.x"
+#   },
+#   "dependencies": {
+#     "@reduxjs/toolkit": "^1.9.3",
+#     "axios": "^1.4.0",
+#     "babel-jest": "^26.6.1",
+#     "react": "^18.0.0",
+#     "react-dom": "^18.0.0",
+#     "react-redux": "^8.1.1",
+#     "react-router-dom": "^6.10.0",
+#     "react-scripts": "^5.0.1",
+#     "redux": "^4.2.1",
+#     "uuid": "^8.3.2"
+#   },
+#   "scripts": {
+#     "start": "PORT=4000 react-scripts start",
+#     "build": "react-scripts build",
+#     "test": "react-scripts test",
+#     "eject": "react-scripts eject"
+#   },
+#   "eslintConfig": {
+#     "extends": [
+#       "react-app",
+#       "react-app/jest"
+#     ]
+#   },
+#   "browserslist": {
+#     "production": [
+#       ">0.2%",
+#       "not dead",
+#       "not op_mini all"
+#     ],
+#     "development": [
+#       "last 1 chrome version",
+#       "last 1 firefox version",
+#       "last 1 safari version"
+#     ]
+#   }
+# }
+
+
+
+
+
+
+## from App.jsx
+
+# // import { useSelector } from "react-redux"
+# // import { selectUser } from "./userSlice"
+
+#   // const user = useSelector(selectUser)
+
+
+#   // const [user, setUser] = useState(null) // REMOVE STATE
+#   // const [user, setUser] = useState({ "id": 1, "username": "Momo" })
+
+#   // useEffect(() => {
+#   //   // auto-login
+#   //   fetch("/me").then(res => {
+#   //     if (res.ok) {
+#   //       res.json().then(user => setUser(user))
+#   //     }
+#   //   })
+#   // }, [])
+
+#   // if (user) {
+#     // return (
+#     //   <div className="App">
+#     //     <Header user={user} onLogout={() => setUser(null)} className="App-header" />
+#     //     <Main user={user} />
+#     //   </div>
+#     // )  
+#   // } else {
+#     // return <Login onLogin={user => setUser(user)} />
+#   // }
+
+
+
+
+
+
+
+
+
+
+## from NavBar component
+
+# // <button className="Ghost-button">Logout</button>
+# // {user ? <LogoutButton user={user}/> : "" }
+
+# // import Login from './pages/Login'
+
+
+# // <Link to="/group">Logout</Link>
+# // <Route path="/group" element={<Group />} />
+
+# // function handleLogout() {
+# //   fetch("/logout", {
+# //     method: "DELETE",
+# //   // }).then(() => onLogout())
+# // }
+
+# // if (user) {
+# //   return (
+# //     <div className="App">
+# //       <Header user={user} onLogout={() => setUser(null)} className="App-header" />
+# //       <Main user={user} />
+# //     </div>
+# //   )  
+# // } else {
+# //   return <Login onLogin={user => setUser(user)} />
+# // }
