@@ -7,11 +7,12 @@ function Groups() {
 
   const dispatch = useDispatch()
 
-  console.log(user.groups)
+  // console.log(user.groups)
   
   return(
     <>
-      {user.groups.map(g => <h2 key={g.id}>{g.name}</h2>)}
+      Groups
+      {/* {user.groups.map(g => <h2 key={g.id}>{g.name}</h2>)} */}
     </>
   )
 }

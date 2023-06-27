@@ -12,9 +12,10 @@ function NavBar() {
 
   function handleLogoutClick() {
     dispatch(userLogout())
+    // return(<Login />)
   }
 
-  console.log(user)
+  // console.log(user)
   
   return (
     <navbar>
@@ -31,7 +32,7 @@ function NavBar() {
             <NavLink to="/groups" className="App-link">
               Groups
             </NavLink>
-            <NavLink className="App-link" onClick ="handleLogoutClick">
+            <NavLink className="App-link" onClick ={handleLogoutClick}>
               Logout
             </NavLink>
           </nav>
