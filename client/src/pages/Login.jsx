@@ -1,12 +1,25 @@
+import {useEffect, useState} from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { selectUser, fetchUser } from "../features/user/userSlice"
 import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
 
-function Login({ onLogin }) {
+function Login() {
+  const [loginSignup, setLoginSignup] = useState(true)
+  // const [keys, setKeys] = useState(null)
+
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchUser())    
+  // }, [dispatch]);  
 
   return(
     <>
-      <LoginForm onLogin={onLogin} />
-      <SignupForm onLogin={onLogin} />
+      {loginSignup 
+        ? <LoginForm setLoginSignup={setLoginSignup} />
+        : <SignupForm setLoginSignup={setLoginSignup} /> // {keys}
+      }
     </>
   )
 }

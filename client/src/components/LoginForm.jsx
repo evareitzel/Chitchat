@@ -1,37 +1,42 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux" // useSelector
+import { userLogin } from '../features/user/userSlice' // selectErrors
 
-export default function LoginForm({ onLogin }) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+function LoginForm({ setLoginSignup }) {
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    fetch("/login", {
-      method: "Post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ 
-        username, 
-        password 
-      }),
+  const dispatch = useDispatch()
+  // const errors = useSelector(selectErrors)
+
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  })
+
+  function loginOnChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    
+    setUser({
+      ...user,
+      [name]: value
     })
-    .then(r => r.json())
-    // .then(r => console.log(r))
-    .then(user => onLogin(user))
+  }
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    dispatch(userLogin(user))
   }
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
+    <form onSubmit={handleLoginSubmit} autoComplete="off">
       <h1>Log In</h1>
       <p>Log in to your chitchat account</p>
       <div>
         <label >Username
           <input 
             type="text"
-            id="login_username"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
+            name="username"
+            onChange={loginOnChange}
           />
         </label>
       </div>
@@ -39,13 +44,25 @@ export default function LoginForm({ onLogin }) {
         <label>Password
           <input 
             type="password"
-            id="login_password"
-            value={password}            
-            onChange={e => setPassword(e.target.value)}
+            name="password"
+            onChange={loginOnChange}
           />
         </label>
       </div>
       <button type="submit">Login</button>
+
+      {/* {errors.map(err => <span>{err}</span>)} */}
+
+      <br />
+      <br />
+      <br />
+
+      <div>
+        Don't have an account yet? 
+        <button onClick={() => setLoginSignup(false)}>Sign up</button>
+      </div>
     </form>
   )
 }
+
+export default LoginForm

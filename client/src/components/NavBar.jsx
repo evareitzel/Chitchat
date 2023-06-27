@@ -6,7 +6,6 @@ import LogoutButton from "./LogoutButton"
 
 function NavBar() {
   const user = useSelector(selectUser)
-  console.log(user)
 
   return (
     <navbar>
@@ -22,7 +21,7 @@ function NavBar() {
         </NavLink>
         <NavLink to="/login" className="App-link">
           Login</NavLink>
-        {user ? <LogoutButton /> : ""}
+        {/* {user ? <LogoutButton /> : ""} */}
       </nav>
     </navbar>
   )
@@ -44,7 +43,6 @@ export default NavBar
 //   fetch("/logout", {
 //     method: "DELETE",
 //   // }).then(() => onLogout())
-//   }).then(r => console.log(r))
 // }
 
 // if (user) {

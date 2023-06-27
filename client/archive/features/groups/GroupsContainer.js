@@ -9,8 +9,6 @@ function GroupsContainer() {
 
   useEffect(() => dispatch(fetchGroups()), [])
 
-  console.log(groups)  
-
   return(
     <div>
       <p>src/features/groups/Groups</p>
@@ -29,13 +27,8 @@ export default GroupsContainer
   //   useEffect(() => {
   //     fetch('/groups')
   //     .then(r => r.json())
-  //     .then(r => console.log(`Groups: ${r}`))
   //     .then(g => dispatch({type: "SET_GROUPS", groups: g}))
   //   }, [])
-
-  // console.log(`Groups: ${window.json}`)
-  // console.log(document.querySelector(window.json))
-  // console.log(groups)
 
   // const showGroups = () => groups.map(g => {
   //   return (
@@ -59,8 +52,6 @@ export default GroupsContainer
   // useEffect(() => {
   //   fetch('/groups')
   //   .then(r => r.json())
-  //   .then(g => console.log(g)) // not displaying in console
-  //   // .then(r => console.log(`Groups: ${r}`))
   //   // .then(g => dispatch({type: "SET_GROUPS", groups: g}))
   // }, [])
 

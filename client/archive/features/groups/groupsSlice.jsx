@@ -7,7 +7,6 @@
       dispatch({ type: "groups/groupsLoading" });
       fetch('/groups')
         .then(r => r.json())
-        // .then(groups => console.log(groups))
         .then(groups => {
           dispatch({ type: "groups/groupsLoaded", payload: groups });
         })
@@ -28,7 +27,7 @@ export default function groupsReducer(state = initialState, action) {
   // })
   // .then((groups) => {
   //   // instead of logging here, call dispatch and send the cat JSON data to your store
-  //   console.log(groups);
+  //   //
   // });
 
   switch (action.type) {

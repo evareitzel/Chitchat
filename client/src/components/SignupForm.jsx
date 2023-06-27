@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function SignupForm({ onLogin }){
+export default function SignupForm({ setLoginSignup }){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -19,8 +19,8 @@ export default function SignupForm({ onLogin }){
       }),
     })
     .then(r => r.json())
-    // .then(r => console.log(r))
-    .then(user => onLogin(user)) // ? // user => onLogin(user)
+    .then(user => console.log(user))
+    // .then(user => onLogin(user)) // ? // user => onLogin(user)
   }
 
   return (
@@ -57,6 +57,18 @@ export default function SignupForm({ onLogin }){
           </label>
         </div>
         <button type="submit">Submit</button>
+
+        {/* {errors.map(err => <span>{err}</span>)} */}
+
+        <br />
+        <br />
+        <br />
+
+        <div>
+          Have an account already? 
+          <button onClick={() => setLoginSignup(true)}>Log in</button>
+        </div>
+
       </form>
   )
 }
