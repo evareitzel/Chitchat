@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux" // useDispatch
-import { selectErrors, userSignup } from "../features/user/userSlice"
+import { selectErrors, userSignup } from "../features/userSlice"
 
 function SignupForm({ setLoginSignup }) {
   
@@ -88,8 +88,11 @@ function SignupForm({ setLoginSignup }) {
         </label>
       </div>
       <button type="submit">Submit</button>
+      
+      <br />
+      <br />
 
-      {errors.map(err => <span key={err} >x {err}</span>)}
+      {errors.map(err => <div key={err} >x {err}</div>)}
 
       <br />
       <br />

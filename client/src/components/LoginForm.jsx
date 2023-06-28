@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { userLogin, selectErrors } from '../features/user/userSlice'
+import { userLogin, selectErrors } from '../features/userSlice'
+import Home from '../pages/Home'
 
 function LoginForm({ setLoginSignup }) {
 
@@ -25,6 +26,7 @@ function LoginForm({ setLoginSignup }) {
   const handleLoginSubmit = (e) => {
     e.preventDefault()
     dispatch(userLogin(user))
+    return <Home /> // returns last page from a session (not necessarily Home component)
   }
 
   return (
@@ -51,7 +53,10 @@ function LoginForm({ setLoginSignup }) {
       </div>
       <button type="submit">Login</button>
 
-      {errors.map(err => <span key={err} >x {err}</span>)}
+      <br />
+      <br />
+
+      {errors.map(err => <div key={err} >x {err}</div>)}
 
       <br />
       <br />

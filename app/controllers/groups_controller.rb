@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController  
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+  skip_before_action :authorize, only: :index
+
   def index
     render json: Group.all
   end

@@ -1,7 +1,7 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { selectUser, userLogout } from "../features/user/userSlice"
+import { selectUser, userLogout } from "../features/userSlice"
 
 function NavBar() {
   const user = useSelector(selectUser)

@@ -33,8 +33,7 @@ const userSlice = createSlice({
   initialState: {
     value: null, // obj of @current_user
   },
-  reducers: {
-  },
+  reducers: {},
   extraReducers: {
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload

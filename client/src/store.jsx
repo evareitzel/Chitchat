@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import userReducer from './features/user/userSlice'
+import userReducer from './features/userSlice'
+import groupsReducer from './features/groupSlice'
 
 const store = configureStore({
   reducer: {
-    user: userReducer
+    user: userReducer,
+    groups: groupsReducer
   },
   middleware: (getDefaultMiddleware) => 
   getDefaultMiddleware({
@@ -13,10 +15,3 @@ const store = configureStore({
 })
 
 export default store
-
-// import { applyMiddleware } from "redux" 
-// import thunkMiddleware from "redux-thunk"
-// import { composeWithDevTools } from "redux-devtools-extension"
-
-// const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
-// // const store = createStore(groupsReducer) // , applyMiddleware(thunkMiddleware))
