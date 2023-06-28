@@ -2,8 +2,6 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, userLogout } from "../features/user/userSlice"
-// import LogoutButton from "./LogoutButton"
-import Login from "../pages/Login"
 
 function NavBar() {
   const user = useSelector(selectUser)
@@ -12,11 +10,8 @@ function NavBar() {
 
   function handleLogoutClick() {
     dispatch(userLogout())
-    // return(<Login />)
   }
 
-  // console.log(user)
-  
   return (
     <navbar>
       <h1>🗪 chitchat</h1>
@@ -32,9 +27,9 @@ function NavBar() {
             <NavLink to="/groups" className="App-link">
               Groups
             </NavLink>
-            <NavLink className="App-link" onClick ={handleLogoutClick}>
+            <button onClick={handleLogoutClick} className="Ghost-button">
               Logout
-            </NavLink>
+            </button>
           </nav>
         )
       }
@@ -43,9 +38,3 @@ function NavBar() {
 }
 
 export default NavBar
-
-
-// {/* <NavLink to="/login" className="App-link"> */}
-//             {/* Login  
-//           </NavLink> */}
-//           {/* {user ? <LogoutButton /> : ""} */}

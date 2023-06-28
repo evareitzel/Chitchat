@@ -15,7 +15,7 @@ function LoginForm({ setLoginSignup }) {
   function loginOnChange(e) {
     const name = e.target.name
     const value = e.target.value
-    
+
     setUser({
       ...user,
       [name]: value
@@ -33,7 +33,7 @@ function LoginForm({ setLoginSignup }) {
       <p>Log in to your chitchat account</p>
       <div>
         <label >Username
-          <input 
+          <input
             type="text"
             name="username"
             onChange={loginOnChange}
@@ -42,7 +42,7 @@ function LoginForm({ setLoginSignup }) {
       </div>
       <div>
         <label>Password
-          <input 
+          <input
             type="password"
             name="password"
             onChange={loginOnChange}
@@ -51,16 +51,14 @@ function LoginForm({ setLoginSignup }) {
       </div>
       <button type="submit">Login</button>
 
-<div>
-  {errors.map(err => <span key={err} >x {err}</span>)}
-</div>
+      {errors.map(err => <span key={err} >x {err}</span>)}
 
       <br />
       <br />
       <br />
 
       <div>
-        Don't have an account yet? 
+        Don't have an account yet?
         <button onClick={() => setLoginSignup(false)}>Sign up</button>
       </div>
     </form>

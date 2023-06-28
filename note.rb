@@ -174,3 +174,14 @@ package.json (v1)
 # // } else {
 # //   return <Login onLogin={user => setUser(user)} />
 # // }
+
+
+
+# from Home component
+# <p>
+#   You're not in any groups yet!
+#   <br />
+#   <Link to="/groups" className="App-link">Join a group</Link>
+#   </p>
+  
+

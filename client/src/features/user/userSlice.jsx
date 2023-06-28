@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchUser = createAsyncThunk('user/fetchUser', () =>
-  fetch('/me').then(r => (r.ok ? r.json() : [])) // user returns an obj
+  fetch('/me').then(r => (r.ok ? r.json() : []))
 )
 
 export const userLogout = createAsyncThunk('user/logout', () =>
@@ -15,21 +15,16 @@ export const userLogin = createAsyncThunk('user/login', (user) =>
     body: JSON.stringify(user),
   }).then(r => r.json())
 )
-// fetch("/login", {
-//   method: "Post",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ 
-//     username, 
-//     password 
-//   }),
-// })
-// .then(r => r.json())
-// .then(user => onLogin(user))
 
+export const userSignup = createAsyncThunk('user/signup', userInput => 
+    fetch('/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userInput)
+    })
+    .then(r => r.json())
+  )
 
-// export const userSignup
 //// export const userUpdate
 //// export const deleteUser
 
@@ -50,7 +45,9 @@ const userSlice = createSlice({
     [userLogout.fulfilled](state, action) {
       state.value = null
     },
-    // [userSignup.fulfilled](state, action) {},
+    [userSignup.fulfilled](state, action) {
+      state.value = action.payload
+    },
     // [userUpdate.fulfilled](state, action) {},
     // [deleteUser.fulfilled](state) {}
   },
