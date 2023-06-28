@@ -1,14 +1,24 @@
 import './App.css'
 import React from "react"
+import { Routes, Route } from "react-router-dom"
 import NavBar from './components/NavBar'
-import Main from './components/Main'
+import Home from './pages/Home'
+import Groups from './pages/Groups'
+import Login from './pages/Login'
 
 function App() {
+
+  // if (!user) return <Login />
+
 
   return (
     <div className="App">
       <NavBar />
-      <Main />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </div>
   )
 }
