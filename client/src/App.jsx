@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Groups from './pages/Groups'
 import Login from './pages/Login'
+import Group from "./pages/Group"
 
 function App() {
   const user = useSelector(selectUser)
@@ -20,6 +21,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/groups" element={<Groups />} />
         <Route path='/login' element={<Login />} />
+        <Route path="/group" element={<Group />} />
+
       </Routes>
     </div>
   )

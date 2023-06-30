@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react" // useState
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 // import { selectUser } from "../features/userSlice"
 import { fetchGroups } from "../features/groupsSlice"
+// import Group from "./Group"
 
 function Groups() {
   const dispatch = useDispatch()
@@ -27,10 +29,11 @@ function Groups() {
       <h1>Groups</h1>
       {allGroups.map(g => (
         <div>
-        <h3 key={g.id}>{g.name}</h3>
-        {/* <p>{":)" * g.users.length} members</p> */}
-        <p>Members: {g.users.map(u => u.username).join(', ')}</p> 
-        {/* join() wkg? */}
+          <Link to="/group" className="App-link">
+            <h3 key={g.id}>{g.name}</h3>
+          </Link>
+          <p>Members: {g.users.map(u => u.username).join(', ')}</p> 
+          {/* join() wkg? */}
         </div>
       ))}
       {/* { user.groups.length > 0
