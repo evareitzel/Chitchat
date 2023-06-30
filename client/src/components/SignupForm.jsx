@@ -1,12 +1,11 @@
 import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux" // useDispatch
+import { useSelector, useDispatch } from "react-redux"
 import { selectErrors, userSignup } from "../features/userSlice"
 
 function SignupForm({ setLoginSignup }) {
   
   const dispatch = useDispatch()
   const errors = useSelector(selectErrors)
-  // console.log(errors)
 
   const [userInput, setUserInput] = useState({
     username: '',
@@ -21,34 +20,10 @@ function SignupForm({ setLoginSignup }) {
     setUserInput({ ...userInput, [name]: value })
   })
 
-
-
-  // const [username, setUsername] = useState("")
-  // const [password, setPassword] = useState("")
-  // const [passwordConfirmation, setPasswordConfirmation] = useState("")
-
-  // this should be handled thru REDUX (userSlice)
   function handleSubmit(e) {
     e.preventDefault()
 
     dispatch(userSignup(userInput))
-    // dispatchEvent(userSignup(userInput))
-
-  //   fetch("/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username,
-  //       password,
-  //       password_confirmation: passwordConfirmation,
-  //     }),
-  //   })
-  //     .then(r => r.json())
-
-    // .then(user => console.log(user))
-    // .then(user => onLogin(user)) // ? // user => onLogin(user)
   }
 
   return (
@@ -60,9 +35,7 @@ function SignupForm({ setLoginSignup }) {
         <input
           type="text"
           name="username"
-          // value={username}
           onChange={inputOnChange}
-          // onChange={e => setUsername(e.target.value)}
         />
       </div>
       <div>
@@ -70,9 +43,7 @@ function SignupForm({ setLoginSignup }) {
           <input
             type="password"
             name="password"
-            // value={password}
             onChange={inputOnChange}
-            // onChange={e => setPassword(e.target.value)}
           />
         </label>
       </div>
@@ -81,9 +52,7 @@ function SignupForm({ setLoginSignup }) {
           <input
             type="password"
             name="password_confirmation"
-            // value={passwordConfirmation}
             onChange={inputOnChange}
-            // onChange={e => setPasswordConfirmation(e.target.value)}
           />
         </label>
       </div>

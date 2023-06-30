@@ -1,24 +1,51 @@
 {
-  "name": "chitchat",
-  "description": "A project collaboration tool",
-  // "proxy": "http://localhost:4000",
+  "name": "react-rails-api-project-template-client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3000",
   "engines": {
     "node": "16.x"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.1.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-redux": "^7.2.9",
-    "react-router-dom": "^6.13.0",
-    "react-scripts": "^5.0.1",
-    "uuid": "^8.3.2"
+    "@emailjs/browser": "^3.10.0",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.4",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^17.0.2",
+    "react-horizontal-scrolling": "^0.1.13",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "4.0.3",
+    "redux": "^4.2.1",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm install --prefix client && npm run build --prefix client && react-scripts build",
-    "clean": "rm -rf public",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    "start": "PORT=4001 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -2,6 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, userLogout } from "../features/userSlice"
+import Login from '../pages/Login'
 
 function NavBar() {
   const user = useSelector(selectUser)
@@ -10,6 +11,7 @@ function NavBar() {
 
   function handleLogoutClick() {
     dispatch(userLogout())
+    return <Login />
   }
 
   return (

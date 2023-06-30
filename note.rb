@@ -185,3 +185,41 @@ package.json (v1)
 #   </p>
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+# PREVIOUS PACKAGE-LOCK.JSON
+
+# {
+#   "name": "chitchat",
+#   "description": "A project collaboration tool",
+#   "proxy": "http://localhost:3000",
+#   "engines": {
+#     "node": "16.x"
+#   },
+#   "dependencies": {
+#     "@reduxjs/toolkit": "^1.1.0",
+#     "react": "^17.0.1",
+#     "react-dom": "^17.0.1",
+#     "react-redux": "^7.2.9",
+#     "react-router-dom": "^6.13.0",
+#     "react-scripts": "^5.0.1",
+#     "uuid": "^8.3.2"
+#   },
+#   "scripts": {
+#     "start": "react-scripts start",
+#     "build": "npm install --prefix client && npm run build --prefix client && react-scripts build",
+#     "clean": "rm -rf public",
+#     "deploy": "cp -a client/build/. public/",
+#     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+#   }
+# }
