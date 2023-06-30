@@ -26,7 +26,7 @@ export const userSignup = createAsyncThunk('user/signup', userInput =>
   )
 
 //// export const userUpdate
-//// export const deleteUser
+//// export const deleteUser // needed for logging out?
 
 const userSlice = createSlice({
   name: "user",
@@ -41,7 +41,7 @@ const userSlice = createSlice({
     [userLogin.fulfilled](state, action) {
       state.value = action.payload
     },
-    [userLogout.fulfilled](state, action) {
+    [userLogout.fulfilled](state, action) { // axn not used?
       state.value = null
     },
     [userSignup.fulfilled](state, action) {

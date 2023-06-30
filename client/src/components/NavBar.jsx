@@ -11,6 +11,7 @@ function NavBar() {
 
   function handleLogoutClick() {
     dispatch(userLogout())
+    // dispatch(deleteUser())
     return <Login />
   }
 
