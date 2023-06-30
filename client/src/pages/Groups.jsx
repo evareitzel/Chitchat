@@ -16,7 +16,6 @@ function Groups() {
 
   console.log('state: ')  
   console.log(useSelector(state => state))
-
     
   // useEffect(() => {
   //   dispatch(fetchGroups())
