@@ -19,7 +19,8 @@ function App() {
     dispatch(fetchUser())
   }, [dispatch])
 
-  if (!user || user.length === 0) return <Login />
+  // if (!user || user.length === 0) return <Login />
+  if (!user) return <Login />
 
 
   return (

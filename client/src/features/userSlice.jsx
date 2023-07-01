@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchUser = createAsyncThunk('user/fetchUser', () =>
-  fetch('/me').then(r => (r.ok ? r.json() : []))
+  // fetch('/me').then(r => (r.ok ? r.json() : []))
+  fetch('/me').then(r => (r.ok ? r.json() : null))
+
 )
 
 export const userLogout = createAsyncThunk('user/logout', () =>
@@ -16,13 +18,14 @@ export const userLogin = createAsyncThunk('user/login', (user) =>
   }).then(r => r.json())
 )
 
-export const userSignup = createAsyncThunk('user/signup', userInput => 
+export const userSignup = createAsyncThunk('user/signup', (userInput) => 
     fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInput)
+      body: JSON.stringify(userInput),
     })
     .then(r => r.json())
+    .then(newUser => newUser)
   )
 
 //// export const userUpdate

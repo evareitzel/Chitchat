@@ -1,8 +1,6 @@
-import React, { useState } from "react" // useEffect, 
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-// import { selectUser, fetchUser } from "../features/userSlice"
 import { selectErrors, userSignup } from "../features/userSlice"
-// import 
 
 function SignupForm({ setLoginSignup }) {
   
@@ -24,6 +22,10 @@ function SignupForm({ setLoginSignup }) {
 
   function handleSubmit(e) {
     e.preventDefault()
+
+    // fetch()
+    // .then()
+    // .then()
 
     dispatch(userSignup(userInput))
   }
