@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { userLogin, selectErrors } from '../features/userSlice'
-import Dashboard from '../pages/Dashboard'
 
 function LoginForm({ setLoginSignup }) {
 
@@ -26,7 +25,6 @@ function LoginForm({ setLoginSignup }) {
   const handleLoginSubmit = (e) => {
     e.preventDefault()
     dispatch(userLogin(user))
-    return <Dashboard /> // returns last page from a session (not necessarily Dashboard component)
   }
 
   return (

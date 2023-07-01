@@ -1,41 +1,45 @@
 import './App.css'
-import React from "react" // , { useEffect }
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
-// import { useSelector } from "react-redux"
-// import { selectUser } from "./features/userSlice"
+import { useSelector, useDispatch } from "react-redux"
+import { selectUser, fetchUser } from "./features/userSlice"
 import NavBar from './components/NavBar'
 import Dashboard from './pages/Dashboard'
 import Groups from './pages/Groups'
-// import SignupForm from './components/SignupForm'
 import Login from './pages/Login'
-// import Group from "./pages/Group"
+import Group from "./pages/Group"
 
 function App() {
-  // const user = useSelector(selectUser) // NEW
-  // const dispatch = useDispatch() // NEW
+  const user = useSelector(selectUser) // NEW
+  const dispatch = useDispatch() // NEW
 
-  // useEffect(() => {
-  //   dispatch(fetchUser())
-  // }, [])
+  console.log(user)
 
-  // if (!user) return <Login /> // NEW
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
+
+  if (!user || user.length === 0) return <Login />
+
 
   return (
     <div className="App">
+      <NavBar />
+
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/groups" element={<Groups />} />
-        {/* <Route path='/login' element={<SignupForm />} /> */}
         <Route path='/login' element={<Login />} />
-        {/* <Route path="/group" element={<Group />} /> */}
+        <Route path="/group" element={<Group />} />
       </Routes>
-      <NavBar />
-      <Dashboard /> {/* NEW */}
-
-
-      {/* <Dashboard /> NEW */}
     </div>
   )
 }
 
 export default App
+
+
+//////////
+// , { useEffect }
+// import { useSelector } from "react-redux"
+// import { selectUser } from "./features/userSlice"

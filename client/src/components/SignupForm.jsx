@@ -27,8 +27,6 @@ function SignupForm({ setLoginSignup }) {
 
     dispatch(userSignup(userInput))
   }
-
-  // if (!user) return <Login/>
   
   return (
     <form onSubmit={handleSubmit} autoComplete="off">

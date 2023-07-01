@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react" // useEffect
-import { useSelector, useDispatch } from "react-redux"
-import { fetchUser, selectUser } from '../features/userSlice'
+import { useState } from "react" // useEffect
+// import { useSelector, useDispatch } from "react-redux"
+// import { fetchUser, selectUser } from '../features/userSlice'
 import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
-import Dashboard from './Dashboard'
+// import Dashboard from './Dashboard'
 
 function Login() {
   // const user = useSelector(selectUser)
@@ -13,18 +13,19 @@ function Login() {
   // if (user) return <Dashboard />
 
   ///////////
-  const user = useSelector(selectUser) // NEW
-  const dispatch = useDispatch() // NEW
+  // const user = useSelector(selectUser) // NEW
+  // const dispatch = useDispatch() // NEW
 
-  useEffect(() => {
-    dispatch(fetchUser())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchUser())
+  // }, [dispatch])
 
-  // if (!user) return <Login /> // NEW
-  if (user) return <Dashboard /> // NEW
+
   ///////////
 
-  return(
+  // if (!user) 
+  return (
+  // return(
     <div className="App">
       {loginSignup 
         ? <LoginForm setLoginSignup={setLoginSignup} />
