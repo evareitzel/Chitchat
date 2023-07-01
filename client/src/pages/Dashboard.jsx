@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import { selectUser } from '../features/userSlice'
 
-function Home() {
+function Dashboard() {
   const user = useSelector(selectUser)
 
   return(
@@ -25,4 +25,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Dashboard

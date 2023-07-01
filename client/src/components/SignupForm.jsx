@@ -1,6 +1,8 @@
-import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useState } from "react" // useEffect, 
+import { useDispatch, useSelector } from "react-redux"
+// import { selectUser, fetchUser } from "../features/userSlice"
 import { selectErrors, userSignup } from "../features/userSlice"
+// import 
 
 function SignupForm({ setLoginSignup }) {
   
@@ -26,7 +28,7 @@ function SignupForm({ setLoginSignup }) {
     dispatch(userSignup(userInput))
   }
 
-  if (!user) return <Login/>
+  // if (!user) return <Login/>
   
   return (
     <form onSubmit={handleSubmit} autoComplete="off">

@@ -8,12 +8,12 @@ export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
 
 // Eva's attempted SHOW fetch
 
-// attn - 'groups/...' is plural
-export const fetchGroup = createAsyncThunk('groups/fetchGroup', () => {
-  return fetch(`/groups/${id}`)
-  .then(r => r.json())
-  .then(group => group)
-})
+  // attn - 'groups/...' is plural
+  // export const fetchGroup = createAsyncThunk('groups/fetchGroup', () => {
+  //   return fetch(`/groups/${id}`)
+  //   .then(r => r.json())
+  //   .then(group => group)
+  // })
 
 // end Eva's attempted SHOW fetch
 

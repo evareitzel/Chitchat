@@ -16,7 +16,7 @@ function NavBar() {
       {user ? (
         <nav>
           <NavLink to="/" className="App-link">
-            Profile
+            Dashboard
           </NavLink>
           <NavLink to="/groups" className="App-link">
             Groups

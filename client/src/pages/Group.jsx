@@ -4,7 +4,7 @@
 
 function Group({ group }) {
 //   const dispatch = useDispatch()
-  const { id, users, messages, name } = group
+  const { users, messages, name } = group // id, 
 
 //   const allGroups = useSelector(state => state.groups.entities)
 
@@ -43,14 +43,14 @@ function Group({ group }) {
         {messages.map(m => <li className="Message">{m.text}</li>)}
       </ul>
 
-     <form onSubmit={handleSubmitMessage}>
+     {/* <form onSubmit={handleSubmitMessage}>
        <input
        type="text"
        name="newMessage"
        onChange={inputOnChange}
        />
         <button type="submit">Send</button>
-     </form>
+     </form> */}
 
     </>
 
