@@ -223,3 +223,27 @@ package.json (v1)
 #     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
 #   }
 # }
+
+
+# from NavBar component
+# {/* ☺️  */}
+#               {/* 🗪 chitchat */}
+# 🤔😉
+
+#       {/* <NavLink to="/" className="App-link">
+#           Profile
+#           </NavLink> */}
+#       {/* <button onClick={handleLogoutClick} className="Ghost-button">
+#         Logout
+#       </button> */}
+#       {/* {user ? <LogoutButton /> : '' } */}
+
+#         const dispatch = useDispatch()
+
+#   function handleLogoutClick() {
+#     dispatch(userLogout())
+#     dispatch(deleteUser())
+#     return <Login />
+#   }
+
+

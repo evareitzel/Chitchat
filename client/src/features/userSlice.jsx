@@ -26,7 +26,11 @@ export const userSignup = createAsyncThunk('user/signup', userInput =>
   )
 
 //// export const userUpdate
-//// export const deleteUser // needed for logging out?
+export const deleteUser = createAsyncThunk('user/delete', () =>
+  fetch('/me', {
+    method: 'DELETE',
+  })
+)
 
 const userSlice = createSlice({
   name: "user",
@@ -48,7 +52,9 @@ const userSlice = createSlice({
       state.value = action.payload
     },
     // [userUpdate.fulfilled](state, action) {},
-    // [deleteUser.fulfilled](state) {}
+    [deleteUser.fulfilled](state) {
+      state.value = null
+    }
   },
 })
 

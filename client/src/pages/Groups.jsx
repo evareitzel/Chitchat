@@ -1,52 +1,57 @@
-import React, { useEffect, useState } from "react" // useState
-import { Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-// import { selectUser } from "../features/userSlice"
-import { fetchGroups } from "../features/groupsSlice"
-// import Group from "./Group"
+import React, { useEffect } from "react" //  
+// import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux" // useDispatch, 
+import { fetchGroups } from "../features/groupsSlice" // , fetchGroup
+import Group from "./Group"
 
 function Groups() {
   const dispatch = useDispatch()
-
-  // const user = useSelector(selectUser)
+  // const navigate = useNavigate()
 
   const allGroups = useSelector(state => state.groups.entities)
-
-  console.log('allGroups from Groups component: ')
-  console.log(allGroups)
-
-  console.log('state: ')  
-  console.log(useSelector(state => state))
     
   useEffect(() => {
     dispatch(fetchGroups())
   }, [dispatch])
 
+  // useEffect(() => {
+  //   dispatch(fetchGroup())
+  // }, [dispatch])
+
   // const handleJoinGroupsClick = () => {console.log('JOIN A GROUP!!!!')}
+
+  console.log(useSelector(state => state))
 
   return (
     <>
       <h1>Groups</h1>
       {allGroups.map(g => (
-        <div>
-          <Link to="/group" className="App-link">
-            <h3 key={g.id}>{g.name}</h3>
-          </Link>
-          <p>Members: {g.users.map(u => u.username).join(', ')}</p> 
-          {/* join() wkg? */}
-        </div>
+        <Group group={g} />
+        // <p>{g.name}</p>
+          // <button onClick={()=>{return <Group group={g} />}}>
+          //   {g.name}
+          // </button>
       ))}
-      {/* { user.groups.length > 0
-        ? (
-          user.groups.map(g => <h2 key={g.id}>{g.name}</h2>)
-        ) : (
-          <button onClick={handleJoinGroupsClick}>
-            Join a group
-          </button>
-        ) */}
-      {/* } */}
     </>
   )
 }
 
 export default Groups
+
+          // {/* <p>Members: {g.users.map(u => u.username).join(', ')}</p>  */}
+          // {/* join() wkg? */}
+
+
+      // {/* { user.groups.length > 0
+      //   ? (
+      //     user.groups.map(g => <h2 key={g.id}>{g.name}</h2>)
+      //   ) : (
+      //     <button onClick={handleJoinGroupsClick}>
+      //       Join a group
+      //     </button>
+      //   ) */}
+      // {/* } */}
+
+      // <button onClick={()=>{
+      //   navigate("/")
+      // }}>{g.name}</button>

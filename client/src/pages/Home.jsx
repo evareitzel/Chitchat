@@ -14,9 +14,9 @@ function Home() {
           <h3>You're not in any groups yet 👻</h3>
         ) : (
           <>
-            <h2>Your Groups</h2>
+            <h2>My Groups</h2>
             <ul>
-              {user.groups.map (g => <li>{g.name}</li>)}
+              {user.groups.map (g => <li className="li">{g.name}</li>)}
             </ul>
           </>
         )

@@ -12,7 +12,7 @@ import Group from "./pages/Group"
 function App() {
   const user = useSelector(selectUser)
 
-  if (!user) return <Login />
+  // if (!user) return <Login />
 
   return (
     <div className="App">
@@ -22,7 +22,6 @@ function App() {
         <Route path="/groups" element={<Groups />} />
         <Route path='/login' element={<Login />} />
         <Route path="/group" element={<Group />} />
-
       </Routes>
     </div>
   )

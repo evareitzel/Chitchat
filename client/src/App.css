@@ -57,10 +57,25 @@
     margin: 8px 0; */  
 }
 
-/* .Ghost-button {
-
-} */
+.Ghost-button {
+  text-decoration: none;
+  border: 1px solid;
+}
 /* .Errors {
   font-weight: 500;
 
 } */
+
+.Message {
+  border-radius: 50px;
+  padding: 10px 16px;
+  outline: 1px solid;
+  list-style-type: none;
+  /* width: 100% */
+}
+
+.li {
+  list-style-type: none;
+  /* text-align: left; */
+}
+
