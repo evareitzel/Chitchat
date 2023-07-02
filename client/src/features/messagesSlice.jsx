@@ -5,3 +5,5 @@ export const fetchMessages = createAsyncThunk('/messages/fetchMessages', () => {
   .then(r => r.json())
   .then(messages => messages)
 })
+
+// export default 

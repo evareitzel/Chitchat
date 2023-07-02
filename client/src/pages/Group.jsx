@@ -1,41 +1,53 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { fetchGroups } from "../features/groupsSlice"
-import React, { useEffect } from "react"
-import { selectUser } from '../features/userSlice'
+import React, { useEffect, useState } from "react"
+import { selectUser, REMOVE_MESSAGE } from '../features/userSlice'
 import MessageForm from '../components/MessageForm'
-
+import Message from '../components/Message'
 
 function Group({ group }) {
   const dispatch = useDispatch()
-  
   const user = useSelector(selectUser)
-
-  useEffect(() => {
-    dispatch(fetchGroups())
-  }, [dispatch])
-  
-
-  const gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
-
+  let gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
   const { users, messages, name } = gr
+  const [messageList, setMessageList] = useState(messages)
+
+  // useEffect(() => {
+  //   dispatch(fetchGroups())
+  // }, [dispatch])
+  const names = users.map(u => u.username)
+  const unique = [...new Set(names)] 
+
+  // EXTR 
+  function handleDeleteClick(m) {
+    console.log(m.text)
+    // fetch(`/messages/${id}`, {
+    // method: 'DELETE',
+    // })
+    // .then(r => r.json())
+    // .then(() => handleDeleteMessage(message)) // get message var
+    // // dispatch(DELETE_MESSAGE(message))
+
+    alert("Message Deleted!")
+  }
+
+  // function handleDeleteMessage(message) {
+  //   const updated = messages.filter(m => m.id !== message.id)
+  //   setMessageList(updated)
+  // }
+
+
+
 
   return (
     <>
       <h1>{name}</h1>
-      <p>Members: {users.map(u => u.username).join(', ')}</p>
+      <p>👥 {unique.join(', ')}</p>
 
       <ul>
         {messages.map(m => (
-          <li className="Li">
-            <div className="Message">
-              {m.text}
-            </div>
-            <p className="Sender">
-              {(m.user.id !== user.id) ? (`${m.user.username} | `) : ('')}  
-            {m.time}
-            </p>
-          </li>
+          <Message message={m} />
         ))}
       </ul>
 
@@ -115,3 +127,35 @@ export default Group
 
 // const [showNewMessage, setShowNewMessage] = useState(messages)
   // const setRefreshMessages = useSelector(state => state.groups.entities.filter(g => g.id === group.id))// useSelector(selectUser)
+
+
+
+  // console.log(gr)
+  // const gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
+
+
+
+
+
+//   // messages = 
+//   useEffect(() => {
+//     if (newMessage) {
+//       dispatch(fetchGroups(), fetchGroups())
+//       // dispatch(fetchGroups())
+//     }
+// }, [dispatch, newMessage]) // newMessage // triggers after new msg
+
+//   // const [newMessage, setNewMessage] = useState([])
+
+// // useEffect(() => {
+// //   dispatch(fetchGroups())
+// // }, [dispatch])
+
+
+//   function handleAddMessage(newMessage) {
+//     setNewMessage(newMessage)
+//     // gr = dispatch(fetchGroups())
+//     // useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0]
+//     // console.log(gr.shove(newMessage))
+
+// setNewMessage={setNewMessage} onAddMessage={handleAddMessage}

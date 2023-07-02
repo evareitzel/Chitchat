@@ -9,7 +9,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     groups: groupsReducer,
-    // messages: messagesReducer // ,
+    // messages: messagesReducer,
     // reactions: reactionsReducer
   },
   middleware: (getDefaultMiddleware) => 

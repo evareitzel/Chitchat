@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, createReducer } from "@reduxjs/toolkit"
 
 export const fetchUser = createAsyncThunk('user/fetchUser', () =>
   fetch('/me').then(r => (r.ok ? r.json() : null))
@@ -32,11 +32,28 @@ export const deleteUser = createAsyncThunk('user/delete', () =>
   })
 )
 
+// FROM REDUX TOOLKIT DOCS
+export const messagesReducer = createReducer([], builder => {
+  builder
+  .addCase('ADD_MESSAGE', (state, action) => {
+    state.push(action.payload)
+  })
+  .addCase('REMOVE_MESSAGE', (state, action) => {
+    return state.filter((message, i) => i !== action.payload.index)
+  })
+  // .addCase('', (state, action) => {})
+  // .addCase('', (state, action) => {})
+  // .addCase('', (state, action) => {})
+})
+
+// END REDUX TOOLKIT DOCS
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
     value: null, // obj of @current_user
   },
+  //////////
   reducers: {
     addMessage(state, action) {
       return {
@@ -44,6 +61,10 @@ const userSlice = createSlice({
         value: {...state.value, messages: [...state.value.messages, action.payload]},
       }
     },
+    //////////
+
+    //////////
+
     // addGroup(state, action) {},
   //   deleteMessage(state, action){
   //     return {
@@ -81,11 +102,9 @@ export const selectErrors = state => {
   return user && user.errors ? user.errors : []
 }
 
-export const { addMessage } = userSlice.actions // , deleteMessage
+export const { addMessage, ADD_MESSAGE, REMOVE_MESSAGE } = userSlice.actions // , deleteMessage
 
 export default userSlice.reducer
-
-
 
   // extraReducers:  (builder => {
     // builder

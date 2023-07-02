@@ -30,15 +30,14 @@ class MessagesController < ApplicationController
 
   private
 
-  # if message belongs to @current_user (make guard clause!!!!!!!!) - before UPDATE/DELETE
-
   def message_params
     params.permit(:text, :time, :group_id, :user_id)
   end
 
   def find_message
-    Message.find(params[:id])
+    @current_user.Message.find(params[:id]) # fix errors msg
   end
+
 
   def render_not_found_response
     render json: { errors: ["Message not found"]}, status: :not_found

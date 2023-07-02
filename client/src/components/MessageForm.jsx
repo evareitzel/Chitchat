@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser, addMessage } from '../features/userSlice'
+import { selectUser, addMessage, ADD_MESSAGE } from '../features/userSlice'
 
-
-function MessageForm({ group }) { // , setShowNewMessage  // { messageInfo, setMessageInfo, setShowNewMessage }
+function MessageForm({ group }) {
 
   const [userInput, setUserInput] = useState('')
 
@@ -11,34 +10,31 @@ function MessageForm({ group }) { // , setShowNewMessage  // { messageInfo, setM
   const user = useSelector(selectUser)
   const [errors, setErrors] = useState([])
 
+  // console.log('Date: ')
+  // console.log(new Date().toLocaleString('en-us')) // why does this work but not log correctly to back end?
 
   function messageSubmit(e) {
     e.preventDefault()
-    // setUserInput('') // HOW TO CLEAR FORM FIELD
-
-    const newMessage = {
-      user_id: user.id,
-      group_id: group.id,
-      text: userInput,
-      time: new Date()
-    }
 
     fetch('/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newMessage),
+      body: JSON.stringify({
+        user_id: user.id,
+        group_id: group.id,
+        text: userInput,
+        time: new Date().toLocaleString('en-us') // format
+      }),
     }).then(r => {
       if (r.ok) {
         r.json()
-        .then(i => console.log(i)) // WKG. huh
         .then((newMessage) => {
-          
-          dispatch(addMessage(newMessage)) ///////// WHY is this not refreshing messages in UI????
-            // setRefreshMessages(true)
-          // setUserInput('')
+          // debugger
+          dispatch(ADD_MESSAGE(newMessage))
         })
+        setUserInput('') // check
       } else {
         r.json().then(err => setErrors(err.error))
       }
@@ -52,10 +48,20 @@ function MessageForm({ group }) { // , setShowNewMessage  // { messageInfo, setM
         name="new_message"
        onChange={e => setUserInput(e.target.value)}
       />
-      {errors.map(err => <h4 key={err}>{err}</h4>)}
+      {errors.map(err => <h4 key={err}>{err}</h4>)} {/* check if wkg */}
       <button type="submit">Send</button>
     </form>
   )
 }
 
 export default MessageForm
+
+
+
+  // // .then(newMessage => setNewMessage(newMessage))
+  // .then(newMessage => onAddMessage(newMessage))
+
+  // // dispatch(addMessage(newMessage)) ///////// WHY is this not refreshing messages in UI????
+  //   // setRefreshMessages(true)
+
+  // , onAddMessage, setNewMessage, setShowNewMessage  // { messageInfo, setMessageInfo, setShowNewMessage }
