@@ -1,37 +1,30 @@
 
-// import { useDispatch, useSelector } from "react-redux"
-// import { fetchGroups } from "../features/groupsSlice"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchGroups } from "../features/groupsSlice"
+import React, { useEffect } from "react"
 import { selectUser } from '../features/userSlice'
 import MessageForm from '../components/MessageForm'
 
 
 function Group({ group }) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  
   const user = useSelector(selectUser)
-  console.log(user)
 
-  const { users, messages, name } = group
+  useEffect(() => {
+    dispatch(fetchGroups())
+  }, [dispatch])
+  
 
-  // const [userInput, setUserInput] = useState('')
-  // console.log(userInput)
+  const gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
 
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  // dispatch(messageCreate(messageInput)) // msg create? (made up)
-  // }
-
-  console.log(messages[0
-])
-  // function showSender() {
-  //   // m.user.id !== user.id ? (<p className="Sender">{m.user.username}</p>) : ('')
-  // }
-
+  const { users, messages, name } = gr
 
   return (
     <>
       <h1>{name}</h1>
       <p>Members: {users.map(u => u.username).join(', ')}</p>
+
       <ul>
         {messages.map(m => (
           <li className="Li">
@@ -39,20 +32,18 @@ function Group({ group }) {
               {m.text}
             </div>
             <p className="Sender">
-              {(m.user.id !== user.id) ? (`${m.user.username} | `) : ('')
-}  
+              {(m.user.id !== user.id) ? (`${m.user.username} | `) : ('')}  
             {m.time}
             </p>
-            {/* <p className="Sender">{m.user.username}</p> */}
           </li>
         ))}
       </ul>
 
-      <MessageForm group={group} /> {/* setShowNewMessage={setShowNewMessage} */}
-
+      <MessageForm group={gr} /> 
     </>
   )
 }
+
 export default Group
 
 
@@ -84,3 +75,43 @@ export default Group
 //    />
 //     <button type="submit">Send</button>
 //  </form>
+
+
+////////// FROM CLEANUP 7/2
+
+      // {/* setShowNewMessage={setShowNewMessage} */}
+
+      // {/* <ul>
+      //   {messages.map(m => (
+      //     <li className="Li">
+      //       <div className="Message">
+      //         {m.text}
+      //       </div>
+      //       <p className="Sender">
+      //         {(m.user.id !== user.id) ? (`${m.user.username} | `) : ('')}  
+      //       {m.time}
+      //       </p>
+      //     </li>
+      //   ))}
+      // </ul> */}
+
+
+  // console.log('testing gr: ') //
+  // console.log(gr) //
+
+
+  // const [userInput, setUserInput] = useState('')
+  // console.log(userInput)
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  // dispatch(messageCreate(messageInput)) // msg create? (made up)
+  // }
+
+
+    // console.log(user)
+
+  // const { users, messages, name } = group
+
+// const [showNewMessage, setShowNewMessage] = useState(messages)
+  // const setRefreshMessages = useSelector(state => state.groups.entities.filter(g => g.id === group.id))// useSelector(selectUser)

@@ -1,37 +1,20 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser, addMessage } from '../features/userSlice' // addGroup?
+import { selectUser, addMessage } from '../features/userSlice'
 
 
-function MessageForm({ group }) { // { messageInfo, setMessageInfo, setShowNewMessage }
+function MessageForm({ group }) { // , setShowNewMessage  // { messageInfo, setMessageInfo, setShowNewMessage }
 
   const [userInput, setUserInput] = useState('')
-  console.log(userInput)
 
   const dispatch = useDispatch()
   const user = useSelector(selectUser)
   const [errors, setErrors] = useState([])
 
-  // function messageChange(e) {
-  //   const name = e.target.name
-  //   const value = e.target.value
-
-  //   setUserInput({
-  //     ...userInput,
-  //     [name]: value,
-  //   })
-  //   //   setMessageInfo({
-  //   //     ...messageInfo,
-  //   //     [name]: value,
-  //   //   })
-  //   // }
-  // }
 
   function messageSubmit(e) {
     e.preventDefault()
-
-    // console.log(e.target.value)
-  // dispatch(messageCreate(messageInput)) // msg create? (made up)
+    // setUserInput('') // HOW TO CLEAR FORM FIELD
 
     const newMessage = {
       user_id: user.id,
@@ -48,13 +31,15 @@ function MessageForm({ group }) { // { messageInfo, setMessageInfo, setShowNewMe
       body: JSON.stringify(newMessage),
     }).then(r => {
       if (r.ok) {
-        r.json().then((newMessage) => {
-          dispatch(addMessage(newMessage))
-          // setShowNewMessage(true)
+        r.json()
+        .then(i => console.log(i)) // WKG. huh
+        .then((newMessage) => {
+          
+          dispatch(addMessage(newMessage)) ///////// WHY is this not refreshing messages in UI????
+            // setRefreshMessages(true)
           // setUserInput('')
         })
       } else {
-        // handle errors
         r.json().then(err => setErrors(err.error))
       }
     })
@@ -65,7 +50,6 @@ function MessageForm({ group }) { // { messageInfo, setMessageInfo, setShowNewMe
       <input
         type="text"
         name="new_message"
-        // onChange={messageChange}
        onChange={e => setUserInput(e.target.value)}
       />
       {errors.map(err => <h4 key={err}>{err}</h4>)}
