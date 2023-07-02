@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser, addMessage, ADD_MESSAGE } from '../features/userSlice'
+import { selectUser, ADD_MESSAGE } from '../features/userSlice'
 
 function MessageForm({ group }) {
 

@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { fetchGroups } from "../features/groupsSlice"
 import React, { useEffect, useState } from "react"
-import { selectUser, REMOVE_MESSAGE } from '../features/userSlice'
+import { selectUser } from '../features/userSlice'
 import MessageForm from '../components/MessageForm'
 import Message from '../components/Message'
 
@@ -16,29 +16,9 @@ function Group({ group }) {
   // useEffect(() => {
   //   dispatch(fetchGroups())
   // }, [dispatch])
+  
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
-
-  // EXTR 
-  function handleDeleteClick(m) {
-    console.log(m.text)
-    // fetch(`/messages/${id}`, {
-    // method: 'DELETE',
-    // })
-    // .then(r => r.json())
-    // .then(() => handleDeleteMessage(message)) // get message var
-    // // dispatch(DELETE_MESSAGE(message))
-
-    alert("Message Deleted!")
-  }
-
-  // function handleDeleteMessage(message) {
-  //   const updated = messages.filter(m => m.id !== message.id)
-  //   setMessageList(updated)
-  // }
-
-
-
 
   return (
     <>

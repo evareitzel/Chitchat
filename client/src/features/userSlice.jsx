@@ -38,10 +38,10 @@ export const messagesReducer = createReducer([], builder => {
   .addCase('ADD_MESSAGE', (state, action) => {
     state.push(action.payload)
   })
+  // .addCase('UPDATE_MESSAGE', (state, action) => {})
   .addCase('REMOVE_MESSAGE', (state, action) => {
     return state.filter((message, i) => i !== action.payload.index)
   })
-  // .addCase('', (state, action) => {})
   // .addCase('', (state, action) => {})
   // .addCase('', (state, action) => {})
 })
@@ -53,7 +53,6 @@ const userSlice = createSlice({
   initialState: {
     value: null, // obj of @current_user
   },
-  //////////
   reducers: {
     addMessage(state, action) {
       return {
@@ -61,11 +60,8 @@ const userSlice = createSlice({
         value: {...state.value, messages: [...state.value.messages, action.payload]},
       }
     },
-    //////////
 
-    //////////
-
-    // addGroup(state, action) {},
+  // addGroup(state, action) {},
   //   deleteMessage(state, action){
   //     return {
   //       ...state,
@@ -73,7 +69,9 @@ const userSlice = createSlice({
   //     }
   //   },
   },
-  extraReducers: {
+
+  // use the 'builder callback' notation
+  extraReducers: { 
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload
     },
@@ -102,19 +100,6 @@ export const selectErrors = state => {
   return user && user.errors ? user.errors : []
 }
 
-export const { addMessage, ADD_MESSAGE, REMOVE_MESSAGE } = userSlice.actions // , deleteMessage
+export const { ADD_MESSAGE, REMOVE_MESSAGE } = userSlice.actions
 
 export default userSlice.reducer
-
-  // extraReducers:  (builder => {
-    // builder
-    // [fetchUser.fulfilled](state, action) {
-    //   .fetchUser.fulfilled,(state, action) {
-
-    //   state.value = action.payload
-    // },
-    // [userLogin.fulfilled](state, action) {
-    //   state.value = action.payload
-    // },
-
-  // },
