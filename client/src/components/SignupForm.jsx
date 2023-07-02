@@ -22,11 +22,6 @@ function SignupForm({ setLoginSignup }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    // fetch()
-    // .then()
-    // .then()
-
     dispatch(userSignup(userInput))
   }
   

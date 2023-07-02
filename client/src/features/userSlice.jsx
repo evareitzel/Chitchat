@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchUser = createAsyncThunk('user/fetchUser', () =>
-  // fetch('/me').then(r => (r.ok ? r.json() : []))
   fetch('/me').then(r => (r.ok ? r.json() : null))
-
 )
 
 export const userLogout = createAsyncThunk('user/logout', () =>
@@ -28,7 +26,6 @@ export const userSignup = createAsyncThunk('user/signup', (userInput) =>
     .then(newUser => newUser)
   )
 
-//// export const userUpdate
 export const deleteUser = createAsyncThunk('user/delete', () =>
   fetch('/me', {
     method: 'DELETE',
@@ -54,7 +51,6 @@ const userSlice = createSlice({
     [userSignup.fulfilled](state, action) {
       state.value = action.payload
     },
-    // [userUpdate.fulfilled](state, action) {},
     [deleteUser.fulfilled](state) {
       state.value = null
     }
@@ -64,7 +60,6 @@ const userSlice = createSlice({
 export const selectUser = state => {
   const user = state.user.value
   return user && !user.errors ? user : null
-  // return user ? user : null
 }
 
 export const selectErrors = state => {

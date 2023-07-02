@@ -20,7 +20,7 @@ function Groups() {
 
   // const handleJoinGroupsClick = () => {console.log('JOIN A GROUP!!!!')}
 
-  console.log(useSelector(state => state))
+  // console.log(useSelector(state => state))
 
   return (
     <>

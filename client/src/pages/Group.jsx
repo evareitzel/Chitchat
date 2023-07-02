@@ -4,37 +4,16 @@
 
 function Group({ group }) {
 //   const dispatch = useDispatch()
-  const { users, messages, name } = group // id, 
+  const { users, messages, name } = group
 
-//   const allGroups = useSelector(state => state.groups.entities)
+  // const [userInput, setUserInput] = useState('')
+  // console.log(userInput)
 
-//   // function handleSubmitMessage ()
-//   const handleSubmitMessage = (e) => {
-//     e.target.preventDefault()
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+    // dispatch(messageCreate(messageInput)) // msg create? (made up)
+  // }
 
-//     // dispatch state
-    
-//     // fetch('/messages', 'Content-Type': 'application/json',
-//     // head: 'PATCH',
-//     // body: {
-//       // 'text': // e.target.value ?
-//     // })
-//     // .then(r => r.json())
-//     // .then()
-//   }
-
-//   //   console.log('GROUPS: ')
-//   // console.log(allGroups)
-    
-//   // console.log(group)
-//   // console.log(group.messages)
-//   // console.log(group.messages.map(m => m.text))
-
-//   // console.log(id) // get id from html path?
-
-//   // get state from store (dispatch/similar)
-
-//   //  const group = allGroups.filter(g => id === g.id)
   return( 
     <>
       <h1>{name}</h1>
@@ -42,18 +21,35 @@ function Group({ group }) {
       <ul>
         {messages.map(m => <li className="Message">{m.text}</li>)}
       </ul>
-
-     {/* <form onSubmit={handleSubmitMessage}>
+      
+     <form> 
+      {/* onSubmit={handleSubmit} */}
        <input
        type="text"
        name="newMessage"
-       onChange={inputOnChange}
+       onChange={e => e.target.value}
+      //  onChange={e => setUserInput(e.target.value)}
        />
         <button type="submit">Send</button>
-     </form> */}
-
+     </form>
     </>
-
   )
 }
 export default Group
+
+
+    // dispatch state
+    // --> In groupsSlice
+    // fetch('/messages', 'Content-Type': 'application/json',
+    // head: 'PATCH',
+    // body: {
+      // 'text': // e.target.value ?
+    // })
+    // .then(r => r.json())
+    // .then()
+//   }
+
+
+  // console.log(id) // get id from html path?
+  // get state from store (dispatch/similar)
+  //  const group = allGroups.filter(g => id === g.id)
