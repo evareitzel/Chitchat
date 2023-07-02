@@ -30,6 +30,8 @@ class MessagesController < ApplicationController
 
   private
 
+  # if message belongs to @current_user (make guard clause!!!!!!!!) - before UPDATE/DELETE
+
   def message_params
     params.permit(:text, :time, :group_id, :user_id)
   end

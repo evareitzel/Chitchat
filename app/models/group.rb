@@ -3,5 +3,5 @@ class Group < ApplicationRecord
   has_many :users, through: :messages
 
   validates :name, presence: true
-  # validates :user, uniqueness: { scope: :group }
+  # validates :users, uniqueness: { scope: :group } # , message: "can join only once" # NOT WKG
 end

@@ -37,7 +37,21 @@ const userSlice = createSlice({
   initialState: {
     value: null, // obj of @current_user
   },
-  reducers: {},
+  reducers: {
+    addMessage(state, action) {
+      return {
+        ...state,
+        value: {...state.value, messages: [...state.value.messages, action.payload]},
+      }
+    },
+    // addGroup(state, action) {},
+  //   deleteMessage(state, action){
+  //     return {
+  //       ...state,
+  //       value: {...state.value, messages: state.value.messages.filter(m => m.id !== action.payload)},
+  //     }
+  //   },
+  },
   extraReducers: {
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload
@@ -67,7 +81,7 @@ export const selectErrors = state => {
   return user && user.errors ? user.errors : []
 }
 
-// export const {} = userSlice.actions
+export const { addMessage } = userSlice.actions // , deleteMessage
 
 export default userSlice.reducer
 

@@ -7,5 +7,6 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
+  # validates :groups, uniqueness: { scope: :group, message: "can join only once" } # NOT WKG
   # validates :group, uniqueness: { scope: :user } # ? - FIX so people can only join groups once
 end
