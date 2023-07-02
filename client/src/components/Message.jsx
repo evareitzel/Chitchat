@@ -1,20 +1,25 @@
+
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { selectUser, REMOVE_MESSAGE } from '../features/userSlice'
 
 function Message({ message}) {
+  const dispatch = useDispatch()
+
   const user = useSelector(selectUser)
   const t = new Date(message.time)
 
-  
-  // EXTR 
-  function handleDeleteClick(message) {
+
+
+  function handleDeleteClick() {
+    console.log(message)
     console.log(message.text)
-    fetch(`/messages/${id}`, {
-    method: 'DELETE',
-    })
-    .then(r => r.json())
-    .then(() => handleDeleteMessage(message)) // get message var
-    dispatch(REMOVE_MESSAGE(message))
+    // fetch(`/messages/${id}`, {
+    // method: 'DELETE',
+    // })
+    // .then(r => r.json())
+    // .then(() => handleDeleteMessage(message)) // get message var
+    // dispatch(REMOVE_MESSAGE(message))
 
     alert("Message Deleted!")
   }
@@ -28,7 +33,8 @@ function Message({ message}) {
   <li className="Li">
     <div className="Message">
       {message.text}
-      <button onClick={(message) =>handleDeleteClick(message)}>🗑</button> 
+      {/* <button onClick={handleDeleteClick}>🗑</button>  */}
+      <button onClick={()=>{handleDeleteClick()}}>🗑</button> 
     </div>
     <p className="Sender">
       {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
