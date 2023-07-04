@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
 
   def create
     message = Message.create!(message_params)
-    # time = DateTime.now() # FIX
     render json: message, status: :created
   end
 
@@ -24,6 +23,7 @@ class MessagesController < ApplicationController
 
   def destroy
     message = find_message
+    # byebug
     message.destroy
     head :no_content
   end
@@ -34,13 +34,16 @@ class MessagesController < ApplicationController
     params.permit(:text, :time, :group_id, :user_id)
   end
 
+  # @current_user not wkg
   def find_message
-    @current_user.Message.find(params[:id]) # fix errors msg
+    @current_user.messages.find(params[:id]) # fix errors msg
+    # @current_wallet.walletcryptos.find(params[:id]) # fix errors msg
+
   end
 
 
   def render_not_found_response
-    render json: { errors: ["Message not found"]}, status: :not_found
+    render json: { errors: ["Unauthorized / Message not found"]}, status: :not_found # should error message say "unauthorized or similar? "
   end
 
 end

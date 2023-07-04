@@ -1,13 +1,12 @@
+import React  from "react"
+
 import { useSelector } from "react-redux"
 // import { fetchGroups } from "../features/groupsSlice"
 // import React, { useEffect, useState } from "react"
-// import { selectUser } from '../features/userSlice'
 import MessageForm from '../components/MessageForm'
 import Message from '../components/Message'
 
 function Group({ group }) {
-  // const dispatch = useDispatch()
-  // const user = useSelector(selectUser)
   let gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
   const { users, messages, name } = gr
   // const [messageList, setMessageList] = useState(messages)
@@ -18,6 +17,7 @@ function Group({ group }) {
 
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
+  console.log(gr)
 
   return (
     <>

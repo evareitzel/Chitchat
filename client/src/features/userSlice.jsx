@@ -54,12 +54,12 @@ const userSlice = createSlice({
     value: null, // obj of @current_user
   },
   reducers: {
-    addMessage(state, action) {
-      return {
-        ...state,
-        value: {...state.value, messages: [...state.value.messages, action.payload]},
-      }
-    },
+    // addMessage(state, action) {
+    //   return {
+    //     ...state,
+    //     value: {...state.value, messages: [...state.value.messages, action.payload]},
+    //   }
+    // },
 
   // addGroup(state, action) {},
   //   deleteMessage(state, action){
