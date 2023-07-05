@@ -247,3 +247,155 @@ package.json (v1)
 #   }
 
 
+
+
+
+
+
+
+
+
+
+
+# FROM Group.jsx
+
+# // --> In groupsSlice
+# // fetch('/messages', 'Content-Type': 'application/json',
+# // head: 'PATCH',
+# // body: {
+#   // 'text': // e.target.value ?
+# // })
+# // .then(r => r.json())
+# // .then()
+# //   }
+
+
+# // console.log(id) // get id from html path?
+# // get state from store (dispatch/similar)
+# //  const group = allGroups.filter(g => id === g.id)
+
+
+
+# //   <form> 
+# //   {/* onSubmit={handleSubmit} */}
+# //    <input
+# //    type="text"
+# //    name="newMessage"
+# //    onChange={e => e.target.value}
+# //   //  onChange={e => setUserInput(e.target.value)}
+# //    />
+# //     <button type="submit">Send</button>
+# //  </form>
+
+
+# ////////// FROM CLEANUP 7/2
+
+#   // {/* setShowNewMessage={setShowNewMessage} */}
+
+#   // {/* <ul>
+#   //   {messages.map(m => (
+#   //     <li className="Li">
+#   //       <div className="Message">
+#   //         {m.text}
+#   //       </div>
+#   //       <p className="Sender">
+#   //         {(m.user.id !== user.id) ? (`${m.user.username} | `) : ('')}  
+#   //       {m.time}
+#   //       </p>
+#   //     </li>
+#   //   ))}
+#   // </ul> */}
+
+
+# // console.log('testing gr: ') //
+# // console.log(gr) //
+
+
+# // const [userInput, setUserInput] = useState('')
+# // console.log(userInput)
+
+# // function handleSubmit(e) {
+# //   e.preventDefault()
+# // dispatch(messageCreate(messageInput)) // msg create? (made up)
+# // }
+
+
+# // console.log(user)
+
+# // const { users, messages, name } = group
+
+# // const [showNewMessage, setShowNewMessage] = useState(messages)
+# // const setRefreshMessages = useSelector(state => state.groups.entities.filter(g => g.id === group.id))// useSelector(selectUser)
+
+
+
+# // console.log(gr)
+# // const gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
+
+
+
+
+
+# //   // messages = 
+# //   useEffect(() => {
+# //     if (newMessage) {
+# //       dispatch(fetchGroups(), fetchGroups())
+# //       // dispatch(fetchGroups())
+# //     }
+# // }, [dispatch, newMessage]) // newMessage // triggers after new msg
+
+# //   // const [newMessage, setNewMessage] = useState([])
+
+# // // useEffect(() => {
+# // //   dispatch(fetchGroups())
+# // // }, [dispatch])
+
+
+# //   function handleAddMessage(newMessage) {
+# //     setNewMessage(newMessage)
+# //     // gr = dispatch(fetchGroups())
+# //     // useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0]
+# //     // console.log(gr.shove(newMessage))
+
+# // setNewMessage={setNewMessage} onAddMessage={handleAddMessage}
+
+
+
+
+# // let gr = useSelector(state => state.groups.entities.filter(g => g.id === group.id))[0] //
+
+
+
+
+# FROM groupsSlice.jsx
+
+# fetch('/groups').then(r => (r.ok ? r.json() : []))
+
+# {
+# return fetch('/groups') // return needed?
+# .then(r => r.json())
+# .then(groups => groups)
+# }
+
+
+# Eva's attempted SHOW fetch
+
+# attn - 'groups/...' is plural
+# export const fetchGroup = createAsyncThunk('groups/fetchGroup', () => {
+#   return fetch(`/groups/${id}`)
+#   .then(r => r.json())
+#   .then(group => group)
+# })
+
+# end Eva's attempted SHOW fetch
+
+# 1/3 STATE
+
+# 2/3 REDUCERS
+#   3/3 ACTIONS 
+
+
+
+
+
+

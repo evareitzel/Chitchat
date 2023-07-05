@@ -7,7 +7,6 @@ function Dashboard() {
 
   const myGroups = user.groups.map(g => g.name)
   const unique = [...new Set(myGroups)] 
-  console.log(unique)
 
   return(
     <div>

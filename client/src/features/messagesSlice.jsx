@@ -6,30 +6,11 @@ export const fetchMessages = createAsyncThunk('/messages/fetchMessages', () => {
   .then(messages => messages)
 })
 
-
 export const messageDelete = createAsyncThunk("message/delete", (id) =>
   fetch(`/messages/${id}`, {
     method: "DELETE"
   })
-  // .then(r => console.log(r))
 )
-// .then(r => console.log(`deleted from messageSlice! : ${r}`))
-
-
-    // move fetch to store (messagesSlice)
-    // fetch(`/messages/${id}`, {
-    //   method: 'DELETE',
-    // })
-    // .then(r => r.json())
-    // .then(r => {
-    //   // debugger
-    //   console.log(message)}) // get message var
-
-
-
-
-
-
 
   // // FROM REDUX TOOLKIT DOCS
   // export const messagesReducer = createReducer([], builder => {
@@ -62,15 +43,7 @@ const messagesSlice = createSlice({
         state.entities = action.payload;
       },    
     },
-  
-
-
-
 })
-
-
-
-
 
 export const { ADD_MESSAGE, REMOVE_MESSAGE } = messagesSlice.actions
 

@@ -10,9 +10,6 @@ function MessageForm({ group }) {
   const user = useSelector(selectUser)
   const [errors, setErrors] = useState([])
 
-  // console.log('Date: ')
-  // console.log(new Date().toLocaleString('en-us')) // why does this work but not log correctly to back end?
-
   function messageSubmit(e) {
     e.preventDefault()
 
@@ -25,7 +22,7 @@ function MessageForm({ group }) {
         user_id: user.id,
         group_id: group.id,
         text: userInput,
-        time: new Date().toLocaleString('en-us') // format
+        time: new Date().toLocaleString('en-us')
       }),
     }).then(r => {
       if (r.ok) {

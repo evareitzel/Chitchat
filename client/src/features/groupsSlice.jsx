@@ -1,21 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit" // , createReducer
 
 export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
-  return fetch('/groups') // remove return?
+  return fetch('/groups')
   .then(r => r.json())
   .then(groups => groups)
 })
 
-// Eva's attempted SHOW fetch
-
-  // attn - 'groups/...' is plural
-  // export const fetchGroup = createAsyncThunk('groups/fetchGroup', () => {
-  //   return fetch(`/groups/${id}`)
-  //   .then(r => r.json())
-  //   .then(group => group)
-  // })
-
-// end Eva's attempted SHOW fetch
 
 const groupsSlice = createSlice({
   name: "groups",
@@ -23,7 +13,14 @@ const groupsSlice = createSlice({
     entities: [], // groups arr
     status: 'idle', // loading state
   },
-  reducers: {},
+  reducers: {
+    deleteMessage(state, action){
+      return {
+        ...state,
+        value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
+      }
+    },
+  },
   extraReducers: {
     [fetchGroups.pending](state) {
       state.status = 'loading'
@@ -35,13 +32,23 @@ const groupsSlice = createSlice({
   },
 })
 
-export default groupsSlice.reducer
+export const selectGroups = state => {
+  const groups = state.groups.entities
+  return groups && !groups.errors ? groups : null
+}
 
-
-  // fetch('/groups').then(r => (r.ok ? r.json() : []))
-
-  // {
-  // return fetch('/groups') // return needed?
-  // .then(r => r.json())
-  // .then(groups => groups)
+// export const selectGroup = state => {
+//   const group = state.groups.entities.filter(g => {
+//     g.id === action.payload
+//   })
+//   return group && !group.errors ? group : null
 // }
+
+export const selectErrors = state => {
+  const groups = state.groups.entities
+  return groups && groups.errors ? groups.errors : []
+}
+
+export const { deleteMessage } = groupsSlice.actions
+
+export default groupsSlice.reducer

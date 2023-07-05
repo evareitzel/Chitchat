@@ -1,65 +1,42 @@
 
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { selectUser, REMOVE_MESSAGE } from '../features/userSlice'
+import { useDispatch, useSelector } from "react-redux"
+import { selectUser, REMOVE_MESSAGE } from '../features/userSlice' // , REMOVE_MESSAGE
+// import { deleteMessage } from '../features/userSlice'
+import { deleteMessage, selectErrors } from '../features/groupsSlice'
 import { messageDelete } from '../features/messagesSlice'
 
-function Message({ message}) {
+function Message({ message }) {
   const dispatch = useDispatch()
+  const errors = useSelector(selectErrors)
+
   const user = useSelector(selectUser)
   const t = new Date(message.time)
   const { id, text } = message
 
   function handleDeleteMessage(e) {
-    // console.log(message)
-    // console.log(text)
-    // console.log(id)
     const id = e.target.value
-
     dispatch(messageDelete(id))
     // handle errors
 
-    dispatch(REMOVE_MESSAGE(id))
+    // dispatch(REMOVE_MESSAGE(id))
+    dispatch(deleteMessage(id)) // not wkg // REMOVE_MESSAGE // message
 
-
-     // not wkg
-    // dispatch(REMOVE_MESSAGE(id)) // not wkg
-    // alert("Message Deleted!")
-
+    alert("Message Deleted!")
   }
-
-  // function handleDeleteMessage(message) {
-  //   const updated = messages.filter(m => m.id !== message.id)
-  //   setMessageList(updated)
-  // }
  
   return (
-  <li className="Li">
-    <div className="Message">
-      {text}
-      {/* <button onClick={handleDeleteClick}>🗑</button>  */}
-      <button value={id} onClick={handleDeleteMessage}>🗑</button> 
-      {/* onClick={()=>{handleDeleteClick()}} */}
-    </div>
-    <p className="Sender">
-      {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
-      {t.toLocaleString('en-us')}             
-    </p>
-  </li>
-)
+    <li className="Li">
+      <div className="Message">
+        {text}
+        <button value={id} onClick={handleDeleteMessage}>🗑</button> 
+      </div>
+      <p className="Sender">
+        {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
+        {t.toLocaleString('en-us')}             
+      </p>
+      {errors.map(err => <div key={err} >x {err}</div>)}
+    </li>
+  )
 }
 
 export default Message
-
-      // {/* <button value={m} onClick={(e)=>handleDeleteClick}>x</button> */}
-
-          // // move fetch to store (messagesSlice)
-    // fetch(`/messages/${id}`, {
-    //   method: 'DELETE',
-    // })
-    // .then(r => r.json())
-    // .then(r => {
-    //   // debugger
-    //   console.log(message)}) // get message var
-
-    // .then(() => handleDeleteMessage(id)) // get message var
