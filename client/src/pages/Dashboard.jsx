@@ -5,6 +5,10 @@ import { selectUser } from '../features/userSlice'
 function Dashboard() {
   const user = useSelector(selectUser)
 
+  const myGroups = user.groups.map(g => g.name)
+  const unique = [...new Set(myGroups)] 
+  console.log(unique)
+
   return(
     <div>
       <h1>😀 {user.username}</h1>
@@ -16,7 +20,7 @@ function Dashboard() {
           <>
             <h2>My Groups</h2>
             <ul>
-              {user.groups.map (g => <li className="li">{g.name}</li>)}
+              {unique.map (groupName => <li className="li">{groupName}</li>)}
             </ul>
           </>
         )

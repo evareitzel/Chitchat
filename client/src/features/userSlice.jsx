@@ -40,7 +40,13 @@ export const messagesReducer = createReducer([], builder => {
   })
   // .addCase('UPDATE_MESSAGE', (state, action) => {})
   .addCase('REMOVE_MESSAGE', (state, action) => {
-    return state.filter((message, i) => i !== action.payload.index)
+    console.log(state, action)
+    // console.log('REMOVE_MESSAGE in userSlice!') // not logging
+    // debugger // never gets hit
+    return state.filter((id, i) => 
+    i.id !== action.payload.id)
+
+    // return state.filter((message, i) => i !== action.payload.index)
   })
   // .addCase('', (state, action) => {})
   // .addCase('', (state, action) => {})

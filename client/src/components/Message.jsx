@@ -19,17 +19,7 @@ function Message({ message}) {
     dispatch(messageDelete(id))
     // handle errors
 
-    // // move fetch to store (messagesSlice)
-    // fetch(`/messages/${id}`, {
-    //   method: 'DELETE',
-    // })
-    // .then(r => r.json())
-    // .then(r => {
-    //   // debugger
-    //   console.log(message)}) // get message var
-
-    // .then(() => handleDeleteMessage(id)) // get message var
-    // dispatch(REMOVE_MESSAGE(message))
+    dispatch(REMOVE_MESSAGE(id))
 
 
      // not wkg
@@ -62,3 +52,14 @@ function Message({ message}) {
 export default Message
 
       // {/* <button value={m} onClick={(e)=>handleDeleteClick}>x</button> */}
+
+          // // move fetch to store (messagesSlice)
+    // fetch(`/messages/${id}`, {
+    //   method: 'DELETE',
+    // })
+    // .then(r => r.json())
+    // .then(r => {
+    //   // debugger
+    //   console.log(message)}) // get message var
+
+    // .then(() => handleDeleteMessage(id)) // get message var

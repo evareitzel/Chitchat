@@ -17,7 +17,7 @@ function Group({ group }) {
 
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
-  console.log(gr)
+  // console.log(gr)
 
   return (
     <>
