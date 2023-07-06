@@ -5,7 +5,7 @@ import { selectGroups, fetchGroups } from '../features/groupsSlice'
 import MessageForm from '../components/MessageForm'
 import Message from '../components/Message'
 
-function Group({ group, id }) {
+function Group({ group, id, onDeleteMessage }) {
 
   const dispatch = useDispatch()
   const groups = useSelector(selectGroups)
@@ -28,7 +28,7 @@ function Group({ group, id }) {
 
       <ul>
         {messages.map(message => (
-          <Message message={message} id={message.id}/>
+          <Message message={message} id={message.id} onDeleteMessage={onDeleteMessage} />
         ))}
       </ul>
 

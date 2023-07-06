@@ -6,11 +6,11 @@ import { deleteMessage, selectErrors, selectGroups, fetchGroups, REMOVE_MESSAGE 
 import { fetchMessages, selectMessages } from '../features/messagesSlice'
 
 
-import { messageDelete } from '../features/messagesSlice'
+import { messageDelete, onDeleteMessage } from '../features/messagesSlice'
 
 
 
-function Message({ message, id }) {
+function Message({ message, id, onDeleteMessage }) {
   const dispatch = useDispatch()
   const errors = useSelector(selectErrors)
   // const message = useSelector(select)
@@ -46,12 +46,20 @@ function Message({ message, id }) {
 
   const { text } = message
 
-  function handleDeleteMessage(e) {
+  function handleDeleteClick(e) {
     const id = e.target.value
-    dispatch(messageDelete(id))
+    // dispatch(messageDelete(id))
     // handle errors
 
-    dispatch(REMOVE_MESSAGE(id))
+
+    // export const messageDelete = createAsyncThunk("message/delete", (id) =>
+  fetch(`/messages/${id}`, {
+    method: "DELETE"
+  })
+// )
+
+    // .then(dispatch(REMOVE_MESSAGE(id)))
+    onDeleteMessage(id)
     // dispatch(deleteMessage(id)) // not wkg // REMOVE_MESSAGE // message
 
     // --> trigger rerender groups from store
@@ -63,7 +71,7 @@ function Message({ message, id }) {
     <li className="Li">
       <div className="Message">
         {text}
-        <button value={id} onClick={handleDeleteMessage}>🗑</button> 
+        <button value={id} onClick={handleDeleteClick}>🗑</button> 
       </div>
       <p className="Sender">
         {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
