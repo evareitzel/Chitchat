@@ -6,21 +6,24 @@ import Group from "./Group"
 function Groups() {
   const dispatch = useDispatch()
 
-  const groups = useSelector(selectGroups)
+  let groups = useSelector(selectGroups)
   
   useEffect(() => { // grabs initial groups arr
     dispatch(fetchGroups())
-  }, [dispatch]) // i thought this made a side effect fetch whn dispatch runs (now IN THIS COMPONENT)
+  }, [dispatch]) // i thought this made a side effect fetch when dispatch runs (now IN THIS COMPONENT - WHY IS THIS NOT REFRESHING AUTOMATICALLY?)
 
-  // function handleDeleteMessage(id) {
-  //   dispatch(REMOVE_MESSAGE(id))
-  // }
-
-  const handleDeleteMessage = (id) => {
+  function handleDeleteMessage(id) {
     dispatch(REMOVE_MESSAGE(id))
-    groups = dispatch(fetchGroups)
-    console.log(groups)
+    // dispatch(fetchGroups())
+
+    // console.log(useSelector(state => state))
   }
+
+  // const handleDeleteMessage = (id) => {
+  //   dispatch(REMOVE_MESSAGE(id))
+  //   groups = dispatch(fetchGroups())
+  //   // console.log(groups)
+  // }
 
   return (
     <>

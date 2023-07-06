@@ -6,6 +6,12 @@ export const fetchMessages = createAsyncThunk('/messages/fetchMessages', () => {
   .then(messages => messages)
 })
 
+export const fetchMessage = createAsyncThunk('/messages/fetchMessage', (id) => {
+  return fetch(`/messages/${id}`)
+  .then(r => r.json())
+  .then(message => console.log(message))
+})
+
 export const messageDelete = createAsyncThunk("message/delete", (id) =>
   fetch(`/messages/${id}`, {
     method: "DELETE"

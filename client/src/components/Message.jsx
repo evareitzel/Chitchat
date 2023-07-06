@@ -1,69 +1,28 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser } from '../features/userSlice' // , REMOVE_MESSAGE
-// import { deleteMessage } from '../features/userSlice'
-import { deleteMessage, selectErrors, selectGroups, fetchGroups, REMOVE_MESSAGE } from '../features/groupsSlice'
-import { fetchMessages, selectMessages } from '../features/messagesSlice'
+import { selectUser } from '../features/userSlice'
+import { selectErrors } from '../features/groupsSlice'
+import { fetchMessages, messageDelete } from '../features/messagesSlice' 
 
-
-import { messageDelete, onDeleteMessage } from '../features/messagesSlice'
-
-
-
-function Message({ message, id, onDeleteMessage }) {
+function Message({ message, onDeleteMessage }) {
+  const { text, id } = message
   const dispatch = useDispatch()
   const errors = useSelector(selectErrors)
-  // const message = useSelector(select)
 
   const user = useSelector(selectUser)
   const t = new Date(message.time)
-
-  const groups = useSelector(selectGroups)
-  // .filter(g => g.id === group_id)
-
-  console.log('groups: ')  
-  console.log(groups)
-  // const messages = groups.filter(g => g.id === id)[0]
-
-  const m2 = useSelector(selectMessages)
-  console.log('m2: ')
-  console.log(m2)
-
-  // console.log('messages: ')
-  // console.log(messages)
-
 
   useEffect(() => { // grabs initial messages arr
     dispatch(fetchMessages())
   }, [dispatch])
 
-  console.log(useSelector(state => state.messages.entities))
-
-
-  useEffect(() => { // grabs initial groups arr
-    dispatch(fetchGroups())
-  }, [dispatch])
-
-  const { text } = message
-
   function handleDeleteClick(e) {
     const id = e.target.value
-    // dispatch(messageDelete(id))
-    // handle errors
-
-
-    // export const messageDelete = createAsyncThunk("message/delete", (id) =>
-  fetch(`/messages/${id}`, {
-    method: "DELETE"
-  })
-// )
-
-    // .then(dispatch(REMOVE_MESSAGE(id)))
+    dispatch(messageDelete(id))
+    // fetch(`/messages/${id}`, {
+    //   method: "DELETE"
+    // })
     onDeleteMessage(id)
-    // dispatch(deleteMessage(id)) // not wkg // REMOVE_MESSAGE // message
-
-    // --> trigger rerender groups from store
-
     alert("Message Deleted!")
   }
  
@@ -83,3 +42,29 @@ function Message({ message, id, onDeleteMessage }) {
 }
 
 export default Message
+
+
+  // console.log(useSelector(state => state))
+
+  // const m2 = useSelector(state => state.messages.entities.find(m => m.id === id))
+  // console.log(m2)
+
+  // console.log(useSelector(state => state.messages.entities))
+
+
+  // {/* {m2.text} */} {/* breaks app */}
+
+
+  // fetch(`/messages/${id}`)
+  // .then(r => r.json())
+  // .then(message => console.log(message))
+
+    // useEffect((id) => { // grabs initial message obj // err resp: UNAUTH / MSG NOT FOUND
+  //   dispatch(fetchMessage(id))
+  // }, [dispatch])
+  
+
+  // console.log(useSelector(state => state))
+
+  // fetchMessage,
+  //  id,

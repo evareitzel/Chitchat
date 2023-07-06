@@ -5,13 +5,13 @@ import { selectGroups, fetchGroups } from '../features/groupsSlice'
 import MessageForm from '../components/MessageForm'
 import Message from '../components/Message'
 
-function Group({ group, id, onDeleteMessage }) {
+function Group({ id, onDeleteMessage }) {
 
   const dispatch = useDispatch()
   const groups = useSelector(selectGroups)
 
   const g2 = groups.filter(g => g.id === id)[0]
-  console.log(g2)
+
   useEffect(() => { // grabs initial groups arr
     dispatch(fetchGroups())
   }, [dispatch])
@@ -28,7 +28,7 @@ function Group({ group, id, onDeleteMessage }) {
 
       <ul>
         {messages.map(message => (
-          <Message message={message} id={message.id} onDeleteMessage={onDeleteMessage} />
+          <Message message={message} onDeleteMessage={onDeleteMessage} />
         ))}
       </ul>
 
@@ -38,3 +38,6 @@ function Group({ group, id, onDeleteMessage }) {
 }
 
 export default Group
+
+// id={message.id} 
+// group, 
