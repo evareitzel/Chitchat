@@ -24,7 +24,7 @@ function LoginForm({ setLoginSignup }) {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault()
-    dispatch(userLogin(user))
+    dispatch(userLogin(user))  
   }
 
   return (
@@ -55,6 +55,8 @@ function LoginForm({ setLoginSignup }) {
       <br />
 
       {errors.map(err => <div key={err} >x {err}</div>)}
+      {/* {clearErrors()} */}
+      {/* {errors = []} */}
 
       <br />
       <br />

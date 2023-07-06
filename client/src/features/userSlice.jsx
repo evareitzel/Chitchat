@@ -111,6 +111,6 @@ export const selectErrors = state => {
   return user && user.errors ? user.errors : []
 }
 
-export const { ADD_MESSAGE, REMOVE_MESSAGE, deleteMessage } = userSlice.actions // , deleteMessage
+export const { ADD_MESSAGE, REMOVE_MESSAGE, deleteMessage } = userSlice.actions
 
 export default userSlice.reducer

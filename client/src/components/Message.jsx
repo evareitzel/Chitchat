@@ -1,13 +1,15 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectUser, deleteMessage } from '../features/userSlice'
-import { selectErrors } from '../features/groupsSlice'
+// import { selectErrors } from '../features/groupsSlice'
 import { fetchMessages, REMOVE_MESSAGE, messageDelete } from '../features/messagesSlice'
 
-function Message({ message, onDeleteMessage }) {
+function Message({ message }) {
   const { text, id } = message
   const dispatch = useDispatch()
-  const errors = useSelector(selectErrors)
+
+  // const errors = useSelector(selectErrors)
+// console.log(errors) // NOT WORKING - from messages NOR groupsSlice//////////
 
   const user = useSelector(selectUser)
   const t = new Date(message.time)
@@ -25,8 +27,6 @@ function Message({ message, onDeleteMessage }) {
     // })
     // onDeleteMessage(id)
     dispatch(REMOVE_MESSAGE(id))
-
-
     alert("Message Deleted!")
   }
  
@@ -40,7 +40,7 @@ function Message({ message, onDeleteMessage }) {
         {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
         {t.toLocaleString('en-us')}             
       </p>
-      {errors.map(err => <div key={err} >x {err}</div>)}
+      {/* {errors.map(err => <div key={err} >x {err}</div>)} */}
     </li>
   )
 }

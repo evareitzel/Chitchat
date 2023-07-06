@@ -51,10 +51,15 @@ const messagesSlice = createSlice({
     },
 })
 
-export const selectMessages = state => {
+export const selectErrors = state => {
   const messages = state.messages.entities
   return messages && !messages.errors ? messages : null
 }
+
+// export const selectErrors = state => {
+//   const groups = state.groups.entities
+//   return groups && groups.errors ? groups.errors : []
+// }
 
 
 export const { ADD_MESSAGE, REMOVE_MESSAGE } = messagesSlice.actions

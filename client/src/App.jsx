@@ -16,7 +16,7 @@ function App() {
     dispatch(fetchUser())
   }, [dispatch])
 
-    if (!user || user.length === 0) return <Login />
+  if (!user || user.length === 0) return <Login />
 
   return (
     <div className="App">
