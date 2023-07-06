@@ -8,15 +8,15 @@ import Message from '../components/Message'
 function Group({ group, id }) {
 
   const dispatch = useDispatch()
-  // const groups = useSelector(selectGroups)
+  const groups = useSelector(selectGroups)
 
-  // const group = groups.filter(g => g.id === id)
-  
-  // useEffect(() => { // grabs initial groups arr
-  //   dispatch(fetchGroups())
-  // }, [dispatch])
+  const g2 = groups.filter(g => g.id === id)[0]
+  console.log(g2)
+  useEffect(() => { // grabs initial groups arr
+    dispatch(fetchGroups())
+  }, [dispatch])
 
-  const { users, messages, name } = group
+  const { users, messages, name } = g2
 
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
@@ -28,11 +28,11 @@ function Group({ group, id }) {
 
       <ul>
         {messages.map(message => (
-          <Message message={message} />
+          <Message message={message} id={message.id}/>
         ))}
       </ul>
 
-      <MessageForm group={group} /> 
+      <MessageForm group={g2} /> 
     </>
   )
 }

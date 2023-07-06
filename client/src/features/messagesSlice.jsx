@@ -45,6 +45,12 @@ const messagesSlice = createSlice({
     },
 })
 
+export const selectMessages = state => {
+  const messages = state.messages.entities
+  return messages && !messages.errors ? messages : null
+}
+
+
 export const { ADD_MESSAGE, REMOVE_MESSAGE } = messagesSlice.actions
 
 export default messagesSlice.reducer

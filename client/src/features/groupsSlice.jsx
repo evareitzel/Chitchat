@@ -1,10 +1,35 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit" // , createReducer
+import { createAsyncThunk, createReducer, createSlice } from "@reduxjs/toolkit" // , createReducer
 
 export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
   return fetch('/groups')
   .then(r => r.json())
   .then(groups => groups)
 })
+
+
+// FROM REDUX TOOLKIT DOCS
+export const messagesReducer = createReducer([], builder => {
+  builder
+  // .addCase('ADD_MESSAGE', (state, action) => {
+  //   state.push(action.payload)
+  // })
+  // .addCase('UPDATE_MESSAGE', (state, action) => {})
+  .addCase('REMOVE_MESSAGE', (state, action) => {
+    // debugger // never gets hit
+    // console.log(state)
+
+    // debugger
+    return state.filter((m) => 
+    // debugger
+    m.id !== action.payload)
+  })
+  // .addCase('', (state, action) => {})
+  // .addCase('', (state, action) => {})
+})
+
+// END REDUX TOOLKIT DOCS
+
+
 
 
 const groupsSlice = createSlice({
@@ -49,6 +74,6 @@ export const selectErrors = state => {
   return groups && groups.errors ? groups.errors : []
 }
 
-export const { deleteMessage } = groupsSlice.actions
+export const { deleteMessage, REMOVE_MESSAGE } = groupsSlice.actions
 
 export default groupsSlice.reducer
