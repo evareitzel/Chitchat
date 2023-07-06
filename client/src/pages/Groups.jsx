@@ -5,6 +5,7 @@ import Group from "./Group"
 
 function Groups() {
   const dispatch = useDispatch()
+  // useState = groups.......
 
   let groups = useSelector(selectGroups)
   
@@ -15,15 +16,7 @@ function Groups() {
   function handleDeleteMessage(id) {
     dispatch(REMOVE_MESSAGE(id))
     // dispatch(fetchGroups())
-
-    // console.log(useSelector(state => state))
   }
-
-  // const handleDeleteMessage = (id) => {
-  //   dispatch(REMOVE_MESSAGE(id))
-  //   groups = dispatch(fetchGroups())
-  //   // console.log(groups)
-  // }
 
   return (
     <>

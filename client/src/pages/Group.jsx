@@ -38,6 +38,3 @@ function Group({ id, onDeleteMessage }) {
 }
 
 export default Group
-
-// id={message.id} 
-// group, 

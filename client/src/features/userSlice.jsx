@@ -42,7 +42,9 @@ export const messagesReducer = createReducer([], builder => {
   .addCase('REMOVE_MESSAGE', (state, action) => {
     // debugger // never gets hit
     // console.log(state)
-    return state.filter((m) => 
+    return state.messages.entities.filter((m) => 
+
+    // return state.filter((m) => 
     m.id !== action.payload)
   })
   // .addCase('', (state, action) => {})
@@ -71,12 +73,12 @@ const userSlice = createSlice({
     //   }
     // },
 
-    // deleteMessage(state, action){
-      // return {
-      //   ...state,
-      //   value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)}, // .id
-      // }
-    // },
+    deleteMessage(state, action){
+      return {
+        ...state,
+        value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)}, // .id
+      }
+    },
   },
 
   // use the 'builder callback' notation
@@ -109,6 +111,6 @@ export const selectErrors = state => {
   return user && user.errors ? user.errors : []
 }
 
-export const { ADD_MESSAGE, REMOVE_MESSAGE } = userSlice.actions // , deleteMessage
+export const { ADD_MESSAGE, REMOVE_MESSAGE, deleteMessage } = userSlice.actions // , deleteMessage
 
 export default userSlice.reducer
