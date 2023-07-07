@@ -1,32 +1,19 @@
-import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser, deleteMessage } from '../features/userSlice'
-// import { selectErrors } from '../features/groupsSlice'
-import { fetchMessages, REMOVE_MESSAGE, messageDelete } from '../features/messagesSlice'
+import { selectUser } from '../features/userSlice'
+import { messageDelete } from '../features/messagesSlice'
 
 function Message({ message }) {
   const { text, id } = message
   const dispatch = useDispatch()
-
-  // const errors = useSelector(selectErrors)
-// console.log(errors) // NOT WORKING - from messages NOR groupsSlice//////////
-
   const user = useSelector(selectUser)
   const t = new Date(message.time)
 
-  // useEffect(() => { // grabs initial messages arr
-  //   dispatch(fetchMessages())
-  // }, [dispatch])
-
   function handleDeleteClick(e) {
     const id = e.target.value
-    dispatch(messageDelete(id)) // fetch in messagesSlice // SECOND IN SAMPLE APP
-    dispatch(deleteMessage(id))
-    // fetch(`/messages/${id}`, {
-    //   method: "DELETE"
-    // })
-    // onDeleteMessage(id)
-    dispatch(REMOVE_MESSAGE(id))
+    dispatch(messageDelete(id)) // fetch from messagesSlice
+
+    // dispatch(deleteMessage(id)) // NOT UPDATING STATE CORRECTLY
+    // dispatch(REMOVE_MESSAGE(id)) // NOT UPDATING STATE CORRECTLY
     alert("Message Deleted!")
   }
  
@@ -40,9 +27,19 @@ function Message({ message }) {
         {(message.user.id !== user.id) ? (`${message.user.username} | `) : ('')}  
         {t.toLocaleString('en-us')}             
       </p>
-      {/* {errors.map(err => <div key={err} >x {err}</div>)} */}
+      {/* {errors.map(err => <div key={err} >x {err}</div>)}  */}
+      {/* empty input Breaks app */}
     </li>
   )
 }
 
 export default Message
+
+
+// // import React, { useEffect } from "react"
+// import { useDispatch, useSelector } from "react-redux"
+// import { selectUser } from '../features/userSlice' // , deleteMessage
+// // import { selectErrors } from '../features/groupsSlice'
+// import { messageDelete } from '../features/messagesSlice'// fetchMessages, REMOVE_MESSAGE, 
+
+  // const errors = useSelector(selectErrors) // // NOT WORKING (from messagesSlice NOR groupsSlice)

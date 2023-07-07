@@ -30,18 +30,17 @@ export const messagesReducer = createReducer([], builder => {
 // END REDUX TOOLKIT DOCS
 
 
-
-
 const groupsSlice = createSlice({
   name: "groups",
   initialState: {
-    entities: [], // groups arr
+    entities: [], // groups arr // groups: 
     status: 'idle', // loading state
   },
   reducers: {
-    deleteMessage(state, action){
+    deleteMessage(state, action){ // state = initialState, 
       return {
         ...state,
+        // groups: [...state.groups, action.payload]
         value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
       }
     },

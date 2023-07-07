@@ -54,7 +54,6 @@ function MessageForm({ group }) {
 export default MessageForm
 
 
-
   // // .then(newMessage => setNewMessage(newMessage))
   // .then(newMessage => onAddMessage(newMessage))
 

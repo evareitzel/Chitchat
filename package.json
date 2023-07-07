@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@reduxjs/toolkit": "^1.9.3",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -18,10 +18,12 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^17.0.2",
     "react-horizontal-scrolling": "^0.1.13",
-    "react-redux": "^8.0.5",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^5.3.4",
     "react-scripts": "4.0.3",
     "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
