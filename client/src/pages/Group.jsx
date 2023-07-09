@@ -1,26 +1,21 @@
 import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { selectGroups, fetchGroups } from '../features/groupsSlice'
-
+import { useDispatch, useSelector } from "react-redux" 
 import MessageForm from '../components/MessageForm'
 import Message from '../components/Message'
+import { fetchMessages, addMessage, ADD_MESSAGE } from '../features/messagesSlice' // addMessage
 
-function Group({ group }) { // id
+function Group({ group, onAddMessage }) {
+  const dispatch = useDispatch()
+  const { users, name } = group
+  const messages = (useSelector(state => state.messages.entities))
 
-  // const dispatch = useDispatch()
-  // const groups = useSelector(selectGroups)
+  useEffect(() => {
+    dispatch(fetchMessages())
+  }, [dispatch])
 
-  // const g2 = groups.filter(g => g.id === id)[0]
-
-  // useEffect(() => { // grabs initial groups arr
-  //   dispatch(fetchGroups())
-  // }, [dispatch])
-
-  const { users, messages, name } = group // g2
-
-  console.log('group from Group component: ')
-  console.log(group)
-
+  const groupMessages = messages.filter(m => m.group.id === group.id )
+  console.log(groupMessages)
+  
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
 
@@ -30,12 +25,12 @@ function Group({ group }) { // id
       <p>👥 {unique.join(', ')}</p>
       
       <ul>
-        {messages.map(message => (
+        {groupMessages.map(message => (
           <Message message={message} />
         ))}
       </ul>
 
-      <MessageForm group={group} /> {/* g2 */}
+      <MessageForm group={group} onAddMessage={onAddMessage} />
     </>
   )
 }

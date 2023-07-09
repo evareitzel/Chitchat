@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { selectUser } from '../features/userSlice'
-import { messageDelete } from '../features/messageSlice'
+import { deleteMessage } from '../features/messagesSlice'
+
 
 function Message({ message }) {
   const { text, id } = message
@@ -9,8 +10,9 @@ function Message({ message }) {
   const t = new Date(message.time)
 
   function handleDeleteClick(e) {
+    // DELETE fetch
     const id = e.target.value
-    dispatch(messageDelete(id)) // fetch from messageSlice
+    dispatch(deleteMessage(id)) // new action from messagesSlice
 
     // dispatch(deleteMessage(id)) // NOT UPDATING STATE CORRECTLY
     // dispatch(REMOVE_MESSAGE(id)) // NOT UPDATING STATE CORRECTLY

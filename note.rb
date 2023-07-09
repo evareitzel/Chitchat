@@ -402,3 +402,44 @@ package.json (v1)
 
 
 
+#### FROM GROUP COMPONENT
+# const g2 = groups.filter(g => g.id === id)[0]
+
+# , ADD_MESSAGE
+# g2
+
+# useEffect(() => { // grabs initial groups arr
+#   dispatch(fetchGroups())
+# }, [dispatch])
+
+# fetch('/messages')
+#   .then(r => r.json())
+#   .then(messages =>   console.log(
+#   messages)) // WKG!!!!
+
+
+
+
+
+
+########## messagesSlice
+# export const fetchMessages = createAsyncThunk(
+  #   '/messages/fetchMessages', 
+  #   async() => {
+  #     const r = await fetch('/messages')
+  #     return r.data
+  #   }
+  # )
+  
+  # const fetchMessages = () => {
+  #   fetch('/messages')
+  #   .then(r => r.json())
+  #   .then(messages => messages)
+  # }
+
+
+
+
+
+
+  

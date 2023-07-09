@@ -102,9 +102,9 @@ export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
 // FROM REDUX TOOLKIT DOCS
 export const messagesReducer = createReducer([], builder => {
   builder
-  // .addCase('ADD_MESSAGE', (state, action) => {
-  //   state.push(action.payload)
-  // })
+  .addCase('ADD_MESSAGE', (state, action) => {
+    state.messages.entities.push(action.payload)
+  })
   // .addCase('UPDATE_MESSAGE', (state, action) => {})
   .addCase('REMOVE_MESSAGE', (state, action) => {
     // debugger // never gets hit
@@ -123,7 +123,7 @@ export const messagesReducer = createReducer([], builder => {
 
 
 const groupsSlice = createSlice({
-  name: "groups",
+  name: 'groups',
   initialState: {
     entities: [], // groups arr // groups: 
     status: 'idle', // loading state
@@ -165,6 +165,6 @@ export const selectErrors = state => {
   return groups && groups.errors ? groups.errors : []
 }
 
-export const { deleteMessage, REMOVE_MESSAGE } = groupsSlice.actions
+export const { ADD_MESSAGE, deleteMessage, REMOVE_MESSAGE } = groupsSlice.actions
 
 export default groupsSlice.reducer

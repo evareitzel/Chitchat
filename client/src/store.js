@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"
 import userReducer from './features/userSlice'
 import groupsReducer from './features/groupsSlice'
-import messageReducer from './features/messageSlice'
+import messagesReducer from './features/messagesSlice'
 // import reactionsReducer from './features/reactionsSlice'
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     groups: groupsReducer,
-    message: messageReducer,
+    messages: messagesReducer,
     // reactions: reactionsReducer
   },
 })
