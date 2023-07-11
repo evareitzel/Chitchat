@@ -5,7 +5,7 @@ import Message from '../components/Message'
 import { fetchMessages } from '../features/messagesSlice'
 
 function Group({ group }) {
-  const messages = (useSelector(state => state.messages.messages))
+  const messages = (useSelector(state => state.messages.entities))
   const dispatch = useDispatch()
   const { users, name } = group
 
@@ -16,7 +16,6 @@ function Group({ group }) {
     dispatch(fetchMessages())
   }, [dispatch])
 
-  
   const names = users.map(u => u.username)
   const unique = [...new Set(names)] 
 

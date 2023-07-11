@@ -1,9 +1,8 @@
-import { createAsyncThunk, createReducer, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
   return fetch('/groups')
   .then(r => r.json())
-  .then(groups => groups)
 })
 
 const groupsSlice = createSlice({

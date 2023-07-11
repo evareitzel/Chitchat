@@ -12,6 +12,7 @@ function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
+
   useEffect(() => {
     dispatch(fetchUser())
   }, [dispatch])

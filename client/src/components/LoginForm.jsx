@@ -1,11 +1,11 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { userLogin, selectErrors } from '../features/userSlice'
+import { useDispatch } from "react-redux"
+import { userLogin } from '../features/userSlice'
 
 function LoginForm({ setLoginSignup }) {
 
   const dispatch = useDispatch()
-  const errors = useSelector(selectErrors)
+  // const errors = useSelector(selectErrors)
 
   const [user, setUser] = useState({
     username: '',
@@ -54,7 +54,7 @@ function LoginForm({ setLoginSignup }) {
       <br />
       <br />
 
-      {errors.map(err => <div key={err} >x {err}</div>)}
+      {/* {errors.map(err => <div key={err} >x {err}</div>)} */}
       {/* {clearErrors()} */}
       {/* {errors = []} */}
 
