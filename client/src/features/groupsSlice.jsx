@@ -148,10 +148,10 @@ const groupsSlice = createSlice({
   },
 })
 
-export const selectGroups = state => {
-  const groups = state.groups.entities
-  return groups && !groups.errors ? groups : null
-}
+// export const selectGroups = state => {
+//   const groups = state.groups.entities
+//   return groups && !groups.errors ? groups : null
+// }
 
 // export const selectGroup = state => {
 //   const group = state.groups.entities.filter(g => {

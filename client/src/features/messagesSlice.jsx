@@ -1,10 +1,96 @@
-import { createAsyncThunk, createSlice, createReducer } from "@reduxjs/toolkit" 
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit" // createReducer
 
-export const fetchMessages = createAsyncThunk('messages/fetchMessages', () => { // ? '/messages/...'
+const initialState = {
+  loading: false,
+  messages: [], // entities?
+  error: '',
+}
+
+// generates pending, fulfilled, and rejected action types
+  // arg 1 - action type
+  // arg 2 - async function (returns a promise)
+  // createAsyncThunk dispatches the life cycle methods of a promise as actions
+export const fetchMessages = createAsyncThunk('messages/fetchMessages', () => {
   return fetch('/messages')
   .then(r => r.json())
-  .then(messages => messages)
+  .then(messages => messages) // .data.map(msg => msg.id)
 })
+
+// DELETE fetch
+// export const messageDelete = createAsyncThunk("message/delete", (id) =>
+//   fetch(`/messages/${id}`, {
+//     method: "DELETE"
+//   })
+// )
+
+
+const messagesSlice = createSlice({
+  name: 'messages',
+  initialState,
+  reducers: {
+    addMessage: (state, action) =>  {
+      state.messages.messages.push(action.payload) // edit - use fetch res obj // id: Date.now(),
+    },
+    deleteMessage: (state, action) => {
+      state.messages = state.messages.filter(message => message.id !== action.payload) // make sure an id gets passed in here
+      // return {
+      //   ...state,
+      // value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchMessages.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(fetchMessages.fulfilled, (state, action) => {
+      state.loading = false
+      state.messages = action.payload // res
+      state.error = ''
+      // state.entities.push(action.payload)
+      // state.value = action.payload
+    })
+    builder.addCase(fetchMessages.rejected, (state, action) => {
+      state.loading = false
+      state.messages = []
+      state.error = action.error.message    
+    })
+  },
+
+
+  ////
+  // export const messagesReducer = createReducer([], builder => {
+  //   builder
+  //   .addCase('ADD_MESSAGE', (state, action) => {
+  //     debugger
+  //     state.messages.entities.push(action.payload)
+  //   })
+  //   .addCase('REMOVE_MESSAGE', (state, action) => {
+  //     return state.filter((message, i) => i !== action.payload.index)
+  //   })
+  //   // .addCase('', (state, action) => {})
+  //   // .addCase('', (state, action) => {})
+  //   // .addCase('', (state, action) => {})
+  // })
+
+  ////
+
+  // extraReducers: {
+  //   [fetchMessages.pending](state) {
+  //     state.status = 'loading'
+  //   },
+  //   [fetchMessages.fulfilled](state, action) {
+  //     state.entities = action.payload
+  //     state.status = 'idle'
+  //   },
+  // builder.addCase(fetchMessages.rejected, (state, action) => {
+  // },
+})
+
+
+// export const selectMessages = state => {
+//   const messages = state.messages.entities
+//   return messages && !messages.errors ? messages : null
+// }
 
 // // add POST fetch
 // export const postMessage =
@@ -27,70 +113,6 @@ export const fetchMessages = createAsyncThunk('messages/fetchMessages', () => { 
 // //     r.json().then(err => err.error)
 // //   }
 // // })
-
-// DELETE fetch
-// export const messageDelete = createAsyncThunk("message/delete", (id) =>
-//   fetch(`/messages/${id}`, {
-//     method: "DELETE"
-//   })
-// )
-
-  export const messagesReducer = createReducer([], builder => {
-    builder
-    .addCase('ADD_MESSAGE', (state, action) => {
-      debugger
-      state.messages.entities.push(action.payload)
-    })
-    .addCase('REMOVE_MESSAGE', (state, action) => {
-      return state.filter((message, i) => i !== action.payload.index)
-    })
-    // .addCase('', (state, action) => {})
-    // .addCase('', (state, action) => {})
-    // .addCase('', (state, action) => {})
-  })
-
-
-
-
-const messagesSlice = createSlice({
-  name: 'messages',
-  initialState: { entities: [], status: 'idle' }, // loading:
-  reducers: {
-    addMessage: (state, action) =>  {
-      state.messages.push({ text: action.payload }) // edit - use fetch res obj // id: Date.now(),
-    },
-    deleteMessage: (state, action) => {
-      state.messages = state.messages.filter(message => message.id !== action.payload) // make sure an id gets passed in here
-
-      // return {
-      //   ...state,
-      // value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
-    },
-  },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchMessages.fulfilled, (state, action) => {
-  //     state.entities.push(action.payload)
-  //     // state.value = action.payload
-  //   })
-  // },
-
-  extraReducers: {
-    [fetchMessages.pending](state) {
-      state.status = 'loading'
-    },
-    [fetchMessages.fulfilled](state, action) {
-      state.entities = action.payload
-      state.status = 'idle'
-    },
-  },
-})
-
-
-export const selectMessages = state => {
-  const messages = state.messages.entities
-  return messages && !messages.errors ? messages : null
-}
-
 
 
 

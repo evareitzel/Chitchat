@@ -1,20 +1,15 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectUser } from '../features/userSlice'
-import { addMessage } from '../features/messagesSlice' // postMessage,
-// import { ADD_MESSAGE } from '../features/groupsSlice'
+import { addMessage } from '../features/messagesSlice'
 
-function MessageForm({ group, onAddMessage }) {
-
-  const [userInput, setUserInput] = useState('')
-
+function MessageForm({ group }) {
   const dispatch = useDispatch()
+  const [userInput, setUserInput] = useState('')
   const user = useSelector(selectUser)
   const [errors, setErrors] = useState([])
 
-  const newState = useSelector(state => state.messages.entities)
-  console.log('newState: ')
-  console.log(newState)
+  console.log(useSelector(state => state))
 
   function handleSubmitClick(e) {
     e.preventDefault()
@@ -23,51 +18,16 @@ function MessageForm({ group, onAddMessage }) {
           user_id: user.id,
           group_id: group.id,
           text: userInput,
-          // time: new Date()
-          time: new Date().toLocaleString('en-us')
-
+          time: new Date()
         }
+
     postNewMessage(newMessage)
-    // dispatch(postMessage(newMessage))
-    // dispatch(addMessage(newMessage))
-    // dispatch(ADD_MESSAGE(newMessage))
-
-
-    //     console.log(newMessage)
-    // dispatch(postMessage(newMessage))
-    // dispatch(addMessage(newMessage))
-    // // dispatch(ADD_MESSAGE(newMessage))
-    // setUserInput('') // check
-
-    // fetch('/messages', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     user_id: user.id,
-    //     group_id: group.id,
-    //     text: userInput,
-    //     time: new Date().toLocaleString('en-us')
-    //   }),
-    // }).then(r => {
-    //   if (r.ok) {
-    //     r.json()
-    //     .then((newMessage) => newMessage)
-    //     // console.log(newMessage))
-    //     // debugger
-
-    //       // dispatch(ADD_MESSAGE(newMessage))
-    //       // dispatch(addMessage(newMessage))
-    //     // )
-    //     // setUserInput('') // check
-    //     // e.target.value = ''
-    //   } else {
-    //     r.json().then(err => setErrors(err.error))
-    //   }
-    // })
+    dispatch(addMessage(newMessage))// update message state - NOT WKG
+    
+    setUserInput('') // clear input - NOT WKG
   }
 
+  // extract to messagesSlice
   const postNewMessage = (newMessage) => {
     fetch('/messages', {
       method: 'POST',
@@ -78,23 +38,14 @@ function MessageForm({ group, onAddMessage }) {
     }).then(r => {
       if (r.ok) {
         r.json()
-        .then((message) => onAddMessage(message))
-        // .then((message) => ADD_MESSAGE(message))
-        // console.log(newMessage))
-        // dispatch(ADD_MESSAGE(newMessage)))
-        // console.log(newMessage))
-        // debugger
-
-          // dispatch(ADD_MESSAGE(newMessage))
-          // dispatch(addMessage(newMessage))
-        // )
-        // setUserInput('') // check
-        // e.target.value = ''
+        .then((message) => message)
       } else {
         r.json().then(err => setErrors(err.error))
       }
     })
   }
+
+  console.log(useSelector(state => state.messages.messages))
 
   return (
     <form onSubmit={handleSubmitClick}>
@@ -110,12 +61,3 @@ function MessageForm({ group, onAddMessage }) {
 }
 
 export default MessageForm
-
-
-  // // .then(newMessage => setNewMessage(newMessage))
-  // .then(newMessage => onAddMessage(newMessage))
-
-  // // dispatch(addMessage(newMessage)) ///////// WHY is this not refreshing messages in UI????
-  //   // setRefreshMessages(true)
-
-  // , onAddMessage, setNewMessage, setShowNewMessage  // { messageInfo, setMessageInfo, setShowNewMessage }
