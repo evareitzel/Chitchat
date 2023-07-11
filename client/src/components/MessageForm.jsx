@@ -9,25 +9,23 @@ function MessageForm({ group }) {
   const user = useSelector(selectUser)
   const [errors, setErrors] = useState([])
 
-  console.log(useSelector(state => state))
-
   function handleSubmitClick(e) {
     e.preventDefault()
 
     const newMessage = {
-          user_id: user.id,
-          group_id: group.id,
-          text: userInput,
-          time: new Date()
-        }
+      user_id: user.id,
+      group_id: group.id,
+      text: userInput,
+      time: new Date()
+    }
 
     postNewMessage(newMessage)
     dispatch(addMessage(newMessage))// update message state - NOT WKG
-    
+
     setUserInput('') // clear input - NOT WKG
   }
 
-  // extract to messagesSlice
+  // EXTRACT to messagesSlice
   const postNewMessage = (newMessage) => {
     fetch('/messages', {
       method: 'POST',
@@ -38,21 +36,19 @@ function MessageForm({ group }) {
     }).then(r => {
       if (r.ok) {
         r.json()
-        .then((message) => message)
+          .then((message) => message)
       } else {
         r.json().then(err => setErrors(err.error))
       }
     })
   }
 
-  console.log(useSelector(state => state.messages.messages))
-
   return (
     <form onSubmit={handleSubmitClick}>
       <input
         type="text"
         name="new_message"
-       onChange={e => setUserInput(e.target.value)}
+        onChange={e => setUserInput(e.target.value)}
       />
       {errors.map(err => <h4 key={err}>{err}</h4>)} {/* check if wkg */}
       <button type="submit">Send</button>

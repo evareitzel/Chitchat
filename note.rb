@@ -442,4 +442,446 @@ package.json (v1)
 
 
 
+  # from excellent tutorial
+  # Redux Toolkit Tutorial - 30 - Fetching Data by Codevolution
+  # https://www.youtube.com/watch?v=I2aM7YcOXDY
+
+  # generates pending, fulfilled, and rejected action types
+  # arg 1 - action type
+  # arg 2 - async function (returns a promise)
+  # createAsyncThunk dispatches the life cycle methods of a promise as actions
+
+
+
+
+
+
+
+# ////////// from messagesSlice
+
+
+# // createReducer
+
+#   // format fetch res
+#   // .data.map(msg => msg.id)
+
+#   // export const selectMessages = state => {
+# //   const messages = state.messages.entities
+# //   return messages && !messages.errors ? messages : null
+# // }
+
+#       // state.entities.push(action.payload)
+#       // state.value = action.payload
+
+#   ////
+#   // export const messagesReducer = createReducer([], builder => {
+#   //   builder
+#   //   .addCase('ADD_MESSAGE', (state, action) => {
+#   //     debugger
+#   //     state.messages.entities.push(action.payload)
+#   //   })
+#   //   .addCase('REMOVE_MESSAGE', (state, action) => {
+#   //     return state.filter((message, i) => i !== action.payload.index)
+#   //   })
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   // })
+
+#   ////
+
+#   // extraReducers: {
+#   //   [fetchMessages.pending](state) {
+#   //     state.status = 'loading'
+#   //   },
+#   //   [fetchMessages.fulfilled](state, action) {
+#   //     state.entities = action.payload
+#   //     state.status = 'idle'
+#   //   },
+#   // builder.addCase(fetchMessages.rejected, (state, action) => {
+#   // },
+
+#   // // FROM REDUX TOOLKIT DOCS
+#   // export const messagesReducer = createReducer([], builder => {
+#   //   builder
+#   //   .addCase('ADD_MESSAGE', (state, action) => {
+#   //     state.push(action.payload)
+#   //   })
+#   //   .addCase('REMOVE_MESSAGE', (state, action) => {
+#   //     return state.filter((message, i) => i !== action.payload.index)
+#   //   })
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   // })
   
+#   // END REDUX TOOLKIT DOCS
+
+
+# //////////
+
+#   // extraReducers: {
+#   //   // handle async actions: pending, fulfilled, rejected (for errors)
+#   //   [fetchMessages.fulfilled](state, action) {
+#   //     state.entities = action.payload;
+#     // },    
+#   // },
+
+#   // // FROM REDUX TOOLKIT DOCS
+#   // export const messagesReducer = createReducer([], builder => {
+#   //   builder
+#   //   .addCase('ADD_MESSAGE', (state, action) => {
+#   //     state.push(action.payload)
+#   //   })
+#   //   .addCase('REMOVE_MESSAGE', (state, action) => {
+#   //     return state.filter((message, i) => i !== action.payload.index)
+#   //   })
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   //   // .addCase('', (state, action) => {})
+#   // })
+  
+#   // // END REDUX TOOLKIT DOCS
+  
+
+# // export const { ADD_MESSAGE, REMOVE_MESSAGE } = messagesSlice.actions
+
+
+
+
+# ////////////////////////////////////////
+
+# // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit" //, createReducer }
+
+# // export const fetchMessages = createAsyncThunk('/messages/fetchMessages', () => {
+# //   return fetch('/messages')
+# //   .then(r => r.json())
+# //   .then(messages => messages)
+# // })
+
+# // export const fetchMessage = createAsyncThunk('/messages/fetchMessage', (id) => {
+# //   return fetch(`/messages/${id}`)
+# //   .then(r => r.json())
+# //   .then(message => console.log(message))
+# // })
+
+# // export const messageDelete = createAsyncThunk("message/delete", (id) =>
+# //   fetch(`/messages/${id}`, {
+# //     method: "DELETE"
+# //   })
+# // )
+
+# //   // // FROM REDUX TOOLKIT DOCS
+# //   // export const messagesReducer = createReducer([], builder => {
+# //   //   builder
+# //   //   .addCase('ADD_MESSAGE', (state, action) => {
+# //   //     state.push(action.payload)
+# //   //   })
+# //   //   .addCase('REMOVE_MESSAGE', (state, action) => {
+# //   //     return state.filter((message, i) => i !== action.payload.index)
+# //   //   })
+# //   //   // .addCase('', (state, action) => {})
+# //   //   // .addCase('', (state, action) => {})
+# //   //   // .addCase('', (state, action) => {})
+# //   // })
+  
+# //   // // END REDUX TOOLKIT DOCS
+  
+
+# // const messagesSlice = createSlice({
+# //     name: "messages",
+# //     initialState: {
+# //       entities: [], // array of messages
+# //       status: "idle", // loading state
+# //       error: null,
+# //     },
+# //     reducers: {},
+# //     extraReducers: {
+# //       // handle async actions: pending, fulfilled, rejected (for errors)
+# //       [fetchMessages.fulfilled](state, action) {
+# //         state.entities = action.payload;
+# //       },    
+# //     },
+# // })
+
+# // export const selectErrors = state => {
+# //   const messages = state.messages.entities
+# //   return messages && !messages.errors ? messages : null
+# // }
+
+# // // export const selectErrors = state => {
+# // //   const groups = state.groups.entities
+# // //   return groups && groups.errors ? groups.errors : []
+# // // }
+
+
+# // export const { ADD_MESSAGE, REMOVE_MESSAGE } = messagesSlice.actions
+
+# // export default messagesSlice.reducer
+
+
+# /////////////////////////////////////////////////////
+# // GET fetch
+# // export const fetchMessages = (() => {
+# //   return fetch('/messages')
+# //   .then(r => r.json())
+# //   .then(messages => messages)
+# // })
+
+# // const initialState = {
+# //   messages: [],
+# // }
+
+
+
+# /////////////////////////////////////////////////////////
+#   // initialState: {
+#   //   messages: [], // entities?
+#   //   status: 'idle,' // loading state (sample app)
+#   // },
+#     // status: "idle", // loading state
+#     // error: null,
+
+
+
+
+
+
+########## from groupsSlice
+# // , createReducer
+
+# export const { ADD_MESSAGE, deleteMessage, REMOVE_MESSAGE } = groupsSlice.actions
+
+# deleteMessage(state, action){ // state = initialState, 
+#   return {
+#     ...state,
+#     // groups: [...state.groups, action.payload]
+#     value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
+#   }
+# },
+
+# // FROM REDUX TOOLKIT DOCS
+# export const messagesReducer = createReducer([], builder => {
+#   builder
+#   .addCase('ADD_MESSAGE', (state, action) => {
+#     state.messages.entities.push(action.payload)
+#   })
+#   // .addCase('UPDATE_MESSAGE', (state, action) => {})
+#   .addCase('REMOVE_MESSAGE', (state, action) => {
+#     // debugger // never gets hit
+#     // console.log(state)
+
+#     // debugger
+#     return state.filter((m) => 
+#     // debugger
+#     m.id !== action.payload)
+#   })
+#   // .addCase('', (state, action) => {})
+#   // .addCase('', (state, action) => {})
+# })
+
+# // END REDUX TOOLKIT DOCS
+
+
+# // export const selectGroups = state => {
+# //   const groups = state.groups.entities
+# //   return groups && !groups.errors ? groups : null
+# // }
+
+# // export const selectGroup = state => {
+# //   const group = state.groups.entities.filter(g => {
+# //     g.id === action.payload
+# //   })
+# //   return group && !group.errors ? group : null
+# // }
+
+
+# // import { createSlice } from "@reduxjs/toolkit" // DELETED createAsyncThunk, createReducer, 
+
+# // const initialState = {
+# //   groups: [],
+# // }
+
+# // const groupsSlice = createSlice({
+# //   name: "groups",
+# //   initialState: {
+# //     entities: [], // groups arr // groups: 
+# //     status: 'idle', // loading state
+# //   },
+# //   reducers: {
+# //     deleteMessage(state, action){ // state = initialState, 
+# //       return {
+# //         ...state,
+# //         // groups: [...state.groups, action.payload]
+# //         value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)},
+# //       }
+# //     },
+# //   },
+# //   // extraReducers: {
+# //   //   [fetchGroups.pending](state) {
+# //   //     state.status = 'loading'
+# //   //   },
+# //   //   [fetchGroups.fulfilled](state, action) {
+# //   //     state.entities = action.payload
+# //   //     state.status = 'idle'
+# //   //   },
+# //   // },
+# // })
+
+
+
+
+
+
+
+# // export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
+# //   return fetch('/groups')
+# //   .then(r => r.json())
+# //   .then(groups => groups)
+# // })
+
+
+# // // FROM REDUX TOOLKIT DOCS
+# // export const messagesReducer = createReducer([], builder => {
+# //   builder
+# //   // .addCase('ADD_MESSAGE', (state, action) => {
+# //   //   state.push(action.payload)
+# //   // })
+# //   // .addCase('UPDATE_MESSAGE', (state, action) => {})
+# //   .addCase('REMOVE_MESSAGE', (state, action) => {
+# //     // debugger // never gets hit
+# //     // console.log(state)
+
+# //     // debugger
+# //     return state.filter((m) => 
+# //     // debugger
+# //     m.id !== action.payload)
+# //   })
+# //   // .addCase('', (state, action) => {})
+# //   // .addCase('', (state, action) => {})
+# // })
+
+# // // END REDUX TOOLKIT DOCS
+
+
+
+# // export const selectGroups = state => {
+# //   const groups = state.groups.entities
+# //   return groups && !groups.errors ? groups : null
+# // }
+
+# // // export const selectGroup = state => {
+# // //   const group = state.groups.entities.filter(g => {
+# // //     g.id === action.payload
+# // //   })
+# // //   return group && !group.errors ? group : null
+# // // }
+
+# // export const selectErrors = state => {
+# //   const groups = state.groups.entities
+# //   return groups && groups.errors ? groups.errors : []
+# // }
+
+# // export const { deleteMessage, REMOVE_MESSAGE } = groupsSlice.actions
+
+# // export default groupsSlice.reducer
+
+
+
+
+
+
+
+########### from userSlice 
+
+# ////////////////////
+# // FROM REDUX TOOLKIT DOCS
+# export const messagesReducer = createReducer([], builder => {
+#   builder
+#   .addCase('ADD_MESSAGE', (state, action) => {
+#     state.push(action.payload)
+#   })
+#   // .addCase('UPDATE_MESSAGE', (state, action) => {})
+#   .addCase('REMOVE_MESSAGE', (state, action) => {
+#     // debugger // never gets hit
+#     // console.log(state)
+#     return state.messages.entities.filter((m) => 
+
+#     // return state.filter((m) => 
+#     m.id !== action.payload)
+#   })
+#   // .addCase('', (state, action) => {})
+#   // .addCase('', (state, action) => {})
+# })
+
+# // END REDUX TOOLKIT DOCS
+
+#   // addGroup(state, action) {},
+#   //   deleteMessage(state, action){
+#   //     return {
+#   //       ...state,
+#   //       value: {...state.value, messages: state.value.messages.filter(m => m.id !== action.payload)},
+#   //     }
+#   //   },
+#     // addMessage(state, action) {
+#     //   return {
+#     //     ...state,
+#     //     value: {...state.value, messages: [...state.value.messages, action.payload]},
+#     //   }
+#     // },
+
+#     deleteMessage(state, action){
+#       return {
+#         ...state,
+#         value: {...state.value, messages: state.value.messages.filter(msg => msg.id !== action.payload)}, // .id
+#       }
+#     },
+
+#     ////
+
+# export const { ADD_MESSAGE, REMOVE_MESSAGE, deleteMessage } = userSlice.actions // , deleteMessage
+
+
+
+
+
+
+
+########## from index.js
+
+# // import React from "react"
+# // import ReactDOM from "react-dom/client"
+# // import App from "./App"
+# // import "./index.css"
+
+# // import store from "./store";
+# // import { Provider } from "react-redux";
+# // import { BrowserRouter as Router } from "react-router-dom"
+
+
+# // ReactDOM.createRoot(document.getElementById("root")).render(
+# //   <React.StrictMode>
+# //     <Router>
+# //       <Provider store={store}>
+# //         <App />
+# //       </Provider>
+# //     </Router>
+# //   </React.StrictMode>
+# // );
+
+
+
+
+########## from Message component
+
+# // // import React, { useEffect } from "react"
+# // import { useDispatch, useSelector } from "react-redux"
+# // import { selectUser } from '../features/userSlice' // , deleteMessage
+# // // import { selectErrors } from '../features/groupsSlice'
+# // import { messageDelete } from '../features/messagesSlice'// fetchMessages, REMOVE_MESSAGE, 
+
+#   // const errors = useSelector(selectErrors) // // NOT WORKING (from messagesSlice NOR groupsSlice)
+
+
+#       // dispatch(deleteMessage(id)) // NOT UPDATING STATE CORRECTLY
+#     // dispatch(REMOVE_MESSAGE(id)) // NOT UPDATING STATE CORRECTLY

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react" // , useState
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux" 
 import { fetchGroups } from "../features/groupsSlice"
 import Group from "./Group"
@@ -9,7 +9,7 @@ function Groups() {
 
   useEffect(() => {
     dispatch(fetchGroups())
-  }, [dispatch]) // i thought this made a side effect fetch when dispatch runs (now IN THIS COMPONENT - WHY IS THIS NOT REFRESHING AUTOMATICALLY?)
+  }, [dispatch])
 
   return (
     <>
