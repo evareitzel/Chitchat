@@ -3,5 +3,5 @@ class Message < ApplicationRecord
   belongs_to :user
   has_many :reactions, dependent: :destroy
 
-  validates :text, presence: true
+  validates :text, length: { minimum: 1 } # presence: true
 end

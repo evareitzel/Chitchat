@@ -79,10 +79,30 @@
   text-align: left;
 }
 
+.Message-button {
+  margin: 0 0 0 10px;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.Message-input {
+  margin: 0 0 100px 0;
+}
+
 .Sender {
   color: #999;
-  text-align: left;
+  text-align: right;
   font-style: italic;
   font-size: 13px;
   margin: 5px 20px 20px 40px;
+}
+
+.TextBox {
+  border-radius:  4px;
+  border: 1px solid #fff;
+  /* height: 40px; */
+  /* background: none; */
+  /* rows: 4; */
+
 }

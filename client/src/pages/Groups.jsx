@@ -11,9 +11,13 @@ function Groups() {
     dispatch(fetchGroups())
   }, [dispatch])
 
+  const loading = useSelector(state => state.messages.loading)
+
   return (
     <>
       <h1>Groups</h1>
+      { loading ? <h3>Loading...</h3> : '' }
+      
       {groups.map(group => (
         <Group group={group} key={group.id} />
       ))}

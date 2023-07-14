@@ -1,17 +1,16 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectUser } from '../features/userSlice'
-import { messageCreate } from '../features/messagesSlice' // MESSAGE_ADDED, addNewMessage
+import { messageCreate } from '../features/messagesSlice'
 
 function MessageForm({ group }) {
   const dispatch = useDispatch()
   const [userInput, setUserInput] = useState('')
   const user = useSelector(selectUser)
-  // const [errors, setErrors] = useState([])
-
-  // console.log(useSelector(state => state))
-
-  function handleSubmitClick(e) {
+  
+  const errors = useSelector(state => state.messages.errors) // not getting errors because messageCreate.fulfilled gets hit before POST fetch returns response (message obj) 
+  
+  const handleSubmitClick = (e) => {
     e.preventDefault()
 
     const message = {
@@ -21,11 +20,39 @@ function MessageForm({ group }) {
       time: new Date()
     }
 
-    dispatch(messageCreate(message))
-    // dispatch(addMessage(newMessage))// update message state - NOT WKG
+    dispatch(messageCreate(message)) // breaks app & returns undefined - messageCreate.fulfilled gets hit before POST fetch returns response (message obj)
 
-    setUserInput('') // clear input - NOT WKG
+    setUserInput('') // Not clearing input
   }
+
+  return (
+    <form onSubmit={handleSubmitClick}>
+      <label>New Message
+        <input
+          type="text"
+          name="new_message"
+          onChange={e => setUserInput(e.target.value)}
+          className = "Message-input"
+        />
+      </label>
+            
+      {errors.map(err => <div key={err} >x {err}</div>)}
+
+      <button type="submit">Send</button>
+    </form>
+  )
+}
+
+export default MessageForm
+
+
+
+
+
+
+
+
+
 
   // EXTRACT to messagesSlice
   // const postMessage = (newMessage) => {
@@ -45,17 +72,3 @@ function MessageForm({ group }) {
   //   })
   // }
 
-  return (
-    <form onSubmit={handleSubmitClick}>
-      <input
-        type="text"
-        name="new_message"
-        onChange={e => setUserInput(e.target.value)}
-      />
-      {/* {errors.map(err => <h4 key={err}>{err}</h4>)} check if wkg */}
-      <button type="submit">Send</button>
-    </form>
-  )
-}
-
-export default MessageForm

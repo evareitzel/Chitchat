@@ -885,3 +885,362 @@ package.json (v1)
 
 #       // dispatch(deleteMessage(id)) // NOT UPDATING STATE CORRECTLY
 #     // dispatch(REMOVE_MESSAGE(id)) // NOT UPDATING STATE CORRECTLY
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################################################
+# https://redux.js.org/tutorials/essentials/part-5-async-logic
+
+# import { createSlice, nanoid } from '@reduxjs/toolkit'
+
+# const initialState = {
+#   posts: [],
+#   status: 'idle',
+#   error: null
+# }
+
+# const postsSlice = createSlice({
+#   name: 'posts',
+#   initialState,
+#   reducers: {
+#     postAdded: {
+#       reducer(state, action) {
+#         state.posts.push(action.payload)
+#       },
+#       prepare(title, content, userId) {
+#         // omit prepare logic
+#       }
+#     },
+#     reactionAdded(state, action) {
+#       const { postId, reaction } = action.payload
+#       const existingPost = state.posts.find(post => post.id === postId)
+#       if (existingPost) {
+#         existingPost.reactions[reaction]++
+#       }
+#     },
+#     postUpdated(state, action) {
+#       const { id, title, content } = action.payload
+#       const existingPost = state.posts.find(post => post.id === id)
+#       if (existingPost) {
+#         existingPost.title = title
+#         existingPost.content = content
+#       }
+#     }
+#   }
+# })
+
+# export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions
+
+# export default postsSlice.reducer
+
+# export const selectAllPosts = state => state.posts.posts
+
+# export const selectPostById = (state, postId) =>
+#   state.posts.posts.find(post => post.id === postId)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ////////////////////////////////// from messagesSlice
+
+# // pending // requested
+# // fulfilled // succeeded
+# // rejected // failed
+
+
+
+
+
+# // // Define a thunk that dispatches those action creators
+# // export const messageUpdate = () => async (dispatch) => {
+# //   dispatch(messageUpdate.pending)
+# //   const response = await fetchUpdate()
+# //   dispatch(messageUpdate.fulfilled(response.data))
+# //  }
+
+# // export const fetchUpdate = (updatedMessage) => {
+# //   // createAsyncThunk('messages/update', async (updatedMessage) => {
+# //   // const res = await 
+# //   fetch(`/messages/${updatedMessage.id}`, {
+# //     method: 'PATCH',
+# //     headers: {
+# //       'Content-Type': 'application/json'
+# //     },
+# //     body: JSON.stringify({
+# //       text: updatedMessage.text,
+# //       // time: updatedMessage.text, // not wkg
+# //     })
+# //   })
+# //   .then(r => r.json())
+# //   // console.log('res: ')
+# //   // console.log(res)
+
+# //   // return res // sends a promise to messageUpdate.fulfilled (not undefined)
+# // } // )
+
+# // // const { actions } = messagesSlice
+# // export default messagesSlice.reducer
+
+# // // Destructure and export the plain action creators
+# // export const { updateMessage } = messagesSlice.actions
+
+
+
+
+
+
+
+
+# // POST fetch
+# // export const messageCreate =
+# // createAsyncThunk('messages/create', (message) => {
+# //   fetch('/messages', {
+# //     method: 'POST',
+# //     headers: {
+# //       'Content-Type': 'application/json'
+# //     },
+# //     body: JSON.stringify(message),
+# //   })
+# //   .then(r => r.json())
+# //   // .then((data) => data)
+# //   // .then(m => console.log(m)) // resp comes after createMessage pending & fulfilled run - FIX!!!!!!!!!!
+# // })
+
+
+
+
+#   // .addCase(fetchMessages.rejected, (state, action) => {
+#   //   state.loading = false
+#   //   // state.entities = []
+#   //   state.errors = action.errors // .messages // state.errors = [ action.error.messages ]
+#   // })
+
+
+
+#   // newMessage = state.entities.filter(message => {
+#   //   message.id === 
+#   // })
+#   // state.entities = state.entities.push(action.payload)
+#   // state.errors = []
+
+
+# //////////////////////////////
+
+# // const CREATE_MESSAGE_REQUESTED = 'CREATE_MESSAGE_REQUESTED' // pending
+# // const CREATE_MESSAGE_SUCCEEDED = 'CREATE_MESSAGE_SUCCEEDED' // fulfilled
+# // const CREATE_MESSAGE_FAILED = 'CREATE_MESSAGE_FAILED' // rejected
+
+# // const createMessageRequest = () => {
+# //   return {
+# //     type: CREATE_MESSAGE_REQUESTED,
+# //   }
+# // }
+
+# // const createMessageSuccess = () => {
+# //   return {
+# //     type: CREATE_MESSAGE_SUCCEEDED,
+# //     payload: messages,
+# //   }
+# // }
+
+# // const createMessageFailure = errors => {
+# //   return {
+# //     type: CREATE_MESSAGE_FAILED,
+# //     payload: errors,
+# //   }
+# // } 
+
+# // const reducer = (state = initialState, action) => {
+# //   switch (action.type) {
+# //     case CREATE_MESSAGE_REQUESTED:
+# //       return {
+# //         ...state,
+# //         loading: true,
+# //       }
+# //     case CREATE_MESSAGE_SUCCEEDED:
+# //       return {
+# //         loading: false,
+# //         messages: action.payload,
+# //         errors: [],
+# //       }
+# //     case CREATE_MESSAGE_FAILED:
+# //       return {
+# //         loading: false,
+# //         messages: [],
+# //         errors: action.payload,
+# //       }
+# //   }
+# // } 
+
+
+
+
+
+
+# // reducers: {
+#   // MESSAGE_ADDED: (state, action) => {
+#   //   return {
+#   //     ...state,
+#   //     entities: [...state.entities, action.payload]
+#   //   }
+#   // },
+#   // deleteMessage: (state, action) => {
+#   //   state.entities = state.entities.filter(message => message.id !== action.payload)
+#   //   return {
+#   //     ...state,
+#   //   value: {...state.value, entities: state.value.entities.filter(message => message.id !== action.payload)},
+#   //   }
+#   // },
+# // },
+
+# // export const { deleteMessage, MESSAGE_ADDED } = messagesSlice.actions
+
+
+
+
+
+
+
+
+# // import messages from fetch('/messages') // ? --> './messages' OR fetch('/messages')
+# // const messages = fetch('/messages')
+
+# // export const fetchMessages = createAsyncThunk('messages/fetchAll', async () => {
+# //   const res = await messages.fetchAll()
+# //   return res
+# //   // .then(r => r.json())
+# // })
+
+
+# // const MESSAGE_ADDED = 'MESSAGE_ADDED'
+# // function addNewMessage(newMessage) {
+
+
+# // // }).then(r => {
+# // //   if (r.ok) {
+# // //     r.json()
+# // //     .then(newMessage => newMessage)
+# // //   } else {
+# // //     r.json().then(err => err.error)
+# // //   }
+# // // })
+
+# // DELETE fetch
+# // export const messageDelete = createAsyncThunk("message/delete", (id) =>r
+# //   fetch(`/messages/${id}`, {
+# //     method: "DELETE"
+# //   })
+# // )
+
+# // const reducer = (state = initialState, action) => {
+# //   switch(action.type) {
+# //     case MESSAGE_ADDED:
+# //       return {
+# //         ...state,
+# //         state.messages: ...state.messages.push(action.payload)
+# //       }
+# //   }
+# // }
+
+
+
+
+#     // addMessage(state, action) {
+#     //   return {
+#     //     ...state, messages: [state.messages.messages.push(action.payload)]
+#     //     // messages: [...state.messages.messages, action.payload]
+#     //   }
+#     // },
+
+#     // addMessage: (state, action) =>  {
+#     //   state.messages.messages.push(action.payload)
+#     // },
+#     // MESSAGE_ADDED: (state, action) => {
+#     //   state.messages.push(action.payload)
+#     // },
+
+
+
+
+# // use action type to make axn creator
+# // function addNewMessage() {
+#   // export const addNewMessage = () => {
+#   //   return {
+#   //     type: MESSAGE_ADDED,
+#   //     // payload: newMessage,
+#   //   }
+#   // }
+  
+#   // addMessage = (newMessage) => {
+#   //   fetch('/messages', {
+#   //     method: 'POST',
+#   //     headers: {
+#   //       'Content-Type': 'application/json',
+#   //     },
+#   //     body: JSON.stringify(newMessage),
+#   //   }).then(r => {
+#   //     if (r.ok) {
+#   //       r.json()
+#   //         .then((message) => message)
+#   //     } else {
+#   //       r.json().then(err => setErrors(err.error))
+#   //     }
+#   //   })
+#   // }
+  

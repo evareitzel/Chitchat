@@ -12,11 +12,13 @@ function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
-
   useEffect(() => {
     dispatch(fetchUser())
   }, [dispatch])
 
+  console.log(useSelector(state => state))
+
+  
   if (!user || user.length === 0) return <Login />
 
   return (

@@ -14,15 +14,3 @@ const store = configureStore({
 })
 
 export default store
-
-
-//, applyMiddleware } from "redux"
-// import thunk from "redux-thunk"
-
-  // middleware: (getDefaultMiddleware) => 
-  // getDefaultMiddleware({
-  //   // serializableCheck: {
-  //   //   // Ignore these action types
-  //   //   ignoredActions: ['user/logout/fulfilled', 'appointment/delete/fulfilled', 'user/delete/fulfilled'],
-  //   // },
-  // }),

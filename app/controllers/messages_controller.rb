@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
   def update
     message = find_message
     message.update!(message_params)
+    # message.update(message_params)
     render json: message
   end
 
@@ -31,7 +32,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.permit(:text, :time, :group_id, :user_id)
+    params.permit(:id, :text, :time, :group_id, :user_id)
   end
 
   # @current_user not wkg
