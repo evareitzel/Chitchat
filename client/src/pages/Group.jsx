@@ -17,8 +17,10 @@ function Group({ group }) {
   // const loading = useSelector(state => state.messages.loading)
 
 
-  const groupMessages = messages.filter(m =>
+  const groupMessages = messages.length >= 1 ? (
+    messages.filter(m =>
     m.group.id === group.id)
+  ) : [] // helps screen not go white on UPDATE but bandaid not fix
 
   const names = users.map(u => u.username)
   const unique = [...new Set(names)]

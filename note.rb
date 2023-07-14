@@ -1003,6 +1003,35 @@ package.json (v1)
 # // fulfilled // succeeded
 # // rejected // failed
 
+# //////////////////////////////
+# // POST fetch
+# // export const messageCreate =
+# // createAsyncThunk('messages/create', (message) => {
+# //   fetch('/messages', {
+# //     method: 'POST',
+# //     headers: {
+# //       'Content-Type': 'application/json'
+# //     },
+# //     body: JSON.stringify(message),
+# //   })
+# //   .then(r => r.json())
+# //   // .then(m => console.log(m)) // resp comes after createMessage pending & fulfilled run - FIX!!!!!!!!!!
+# // })
+
+# //   export const messageUpdate = createAsyncThunk('messages/update', (updatedMessage) => {  
+# //     fetch(`/messages/${updatedMessage.id}`, {
+# //       method: 'PATCH',
+# //       headers: {
+# //         'Content-Type': 'application/json'
+# //       },
+# //       body: JSON.stringify({
+# //         text: updatedMessage.text // ,
+# //         // time: updatedMessage.time // FIX so message stays in place (keep original time)
+# //       })
+# //     })
+# //     .then(r => r.json())
+# //     // returning after updateMessage.fulfilled gets hit (HOW??)
+# //     })  
 
 
 

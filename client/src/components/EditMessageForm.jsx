@@ -37,7 +37,7 @@ function EditMessageForm({ message }) {
           name="edit"
           value={userInput}
           onChange={e => setUserInput(e.target.value)}
-          className='TextBox'
+          className='Text-box'
         />
       </label>
       <button type="submit">Update</button>

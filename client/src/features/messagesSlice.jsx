@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-// import { messageAPI } from ''./...' // ???
 
 const initialState = {
   loading: false,
@@ -7,42 +6,25 @@ const initialState = {
   errors: [],
 }
 
-//////////////////////////////
 export const fetchMessages = createAsyncThunk('messages/fetchMessages', () => {
   return fetch('/messages')
-  .then(r => r.json())
+    .then(r => r.json())
 })
-
-// POST fetch
-// export const messageCreate =
-// createAsyncThunk('messages/create', (message) => {
-//   fetch('/messages', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(message),
-//   })
-//   .then(r => r.json())
-//   // .then(m => console.log(m)) // resp comes after createMessage pending & fulfilled run - FIX!!!!!!!!!!
-// })
-
 
 export const messageCreate =
-createAsyncThunk('messages/create', async (message) => {
-  const res = await fetch('/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(message),
+  createAsyncThunk('messages/create', async (message) => {
+    const res = await fetch('/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message),
+    })
+    return res // resp comes after createMessage pending & fulfilled run - FIX!!!!!!!!!!
+
+    // const data = await res.data
+    // return data
   })
-  return res // resp comes after createMessage pending & fulfilled run - FIX!!!!!!!!!!
-
-  // const data = await res.data
-  // return data
-})
-
 
 export const messageUpdate = createAsyncThunk('messages/update', async (updatedMessage) => {
   const res = await fetch(`/messages/${updatedMessage.id}`, {
@@ -56,26 +38,26 @@ export const messageUpdate = createAsyncThunk('messages/update', async (updatedM
     })
   })
   console.log('res: ')
-  console.log(res)
+  console.log(res) // promise
 
-  return res // sends a promise to messageUpdate.fulfilled (not undefined)
+  // add logic for builders if needed
+  // res.text ? messageUpdate.fulfilled(res) : messageUpdate.loading(res) // messageUpdate.rejected
+
+  // return res // res.data // sends a promise to messageUpdate.fulfilled (not undefined)
 })
 
-
-  // export const messageUpdate = createAsyncThunk('messages/update', (updatedMessage) => {  
-  //   fetch(`/messages/${updatedMessage.id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       text: updatedMessage.text // ,
-  //       // time: updatedMessage.time // FIX so message stays in place (keep original time)
-  //     })
-  //   })
-  //   .then(r => r.json())
-  //   // returning after updateMessage.fulfilled gets hit (HOW??)
-  //   })  
+// DELETE fetch
+export const messageDestroy = createAsyncThunk('messages/destroy', (id) => { // async (id) => 
+  // console.log(id)
+  fetch(`/messages/${id}`, {
+    method: 'DELETE',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+  }) // return id for fulfilled builders
+  .then(r => r.json())
+  // .then(r => console.log(r))
+})
 
 const messagesSlice = createSlice({
   name: 'messages',
@@ -83,8 +65,7 @@ const messagesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-
-    // GET MESSAGES
+      // GET MESSAGES
       .addCase(fetchMessages.pending, (state) => {
         state.loading = true
       })
@@ -93,13 +74,12 @@ const messagesSlice = createSlice({
         state.entities = action.payload // fetch res - undefined
         // state.errors = []
       })
-
       // POST MESSAGE
       .addCase(messageCreate.pending, (state) => {
         state.loading = true
       })
-      .addCase(messageCreate.fulfilled, (state, action) => {
-        // console.log('from messageCreate fulfilled: ')
+      .addCase(messageCreate.fulfilled, (state, action) => { // Not working correctly - FIX
+        // console.log('messageCreate.fulfilled - action.payload: ')
         // console.log(action)
         state.loading = false // fetch res // state.entities = [...state.entities, action.payload]
         state.entities = state.entities.push(action.payload)
@@ -110,21 +90,26 @@ const messagesSlice = createSlice({
         state.loading = false
         state.errors = action.payload
       })
-
-      // PATCH MESSAGE
-      .addCase(messageUpdate.pending, (state) => { // WORKS
+      // PATCH MESSAGE/:id
+      .addCase(messageUpdate.pending, (state) => {
         state.loading = true
-        // console.log('messageUpdate.loading hit!')
       })
       .addCase(messageUpdate.fulfilled, (state, action) => {
-        state.loading = false // fetch res // state.entities = [...state.entities, action.payload]
-        console.log('from messageUpdate.fulfilled: ')
+        state.loading = false
+        state.entities = state.entities.push(action.payload) // fetch res // state.entities = [...state.entities, action.payload]
+        console.log('messageUpdate.fulfilled - action.payload: ')
         console.log(action.payload) // undefined
       })
-      .addCase(messageUpdate.rejected, (state, action) => {
-        console.log('messageUpdate.rejected hit!') // not triggering (empty str input)
+      .addCase(messageUpdate.rejected, (state, action) => { // not triggering with empty str input
         state.loading = false
         state.errors = action.payload
+      })
+      // DELETE MESSAGE/:id
+      .addCase(messageDestroy.fulfilled, (state, action) => {
+        console.log(action.payload) // returns a promise, not json obj
+        state.loading = false
+        state.entities = state.entities.filter(message => message.id !== action.payload.id)
+        // state.errors = []
       })
   },
 })

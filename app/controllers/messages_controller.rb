@@ -26,7 +26,9 @@ class MessagesController < ApplicationController
     message = find_message
     # byebug
     message.destroy
-    head :no_content
+    # head :no_content
+    # return json id
+    render json: message
   end
 
   private
