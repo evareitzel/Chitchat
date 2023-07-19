@@ -11,8 +11,6 @@ function EditMessageForm({ message }) {
   // const user = useSelector(selectUser)
   const user = useSelector(state => state.user.value)
   const errors = useSelector(state => state.messages.errors) // NOT RENDERING (don't get hit in time)
-  // console.log('errors: ')
-  // console.log(errors)
 
   const handleEditSubmit = (e) => {
     e.preventDefault()

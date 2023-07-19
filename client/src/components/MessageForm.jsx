@@ -8,7 +8,7 @@ function MessageForm({ group }) {
   const [userInput, setUserInput] = useState('')
   const user = useSelector(selectUser)
   
-  const errors = useSelector(state => state.messages.errors) // not getting errors because messageCreate.fulfilled gets hit before POST fetch returns response (message obj) 
+  const errors = useSelector(state => state.messages.errors)
   
   const handleSubmitClick = (e) => {
     e.preventDefault()
@@ -20,7 +20,7 @@ function MessageForm({ group }) {
       time: new Date()
     }
 
-    dispatch(messageCreate(message)) // breaks app & returns undefined - messageCreate.fulfilled gets hit before POST fetch returns response (message obj)
+    dispatch(messageCreate(message))
 
     setUserInput('') // Not clearing input
   }
@@ -35,7 +35,8 @@ function MessageForm({ group }) {
           className = "Message-input"
         />
       </label>
-            
+
+      {/* breaking app */}
       {errors.map(err => <div key={err} >x {err}</div>)}
 
       <button type="submit">Send</button>

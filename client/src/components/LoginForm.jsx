@@ -23,7 +23,7 @@ function LoginForm({ setLoginSignup }) {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault()
-    dispatch(userLogin(user))  
+    dispatch(userLogin(user))
   }
 
   return (

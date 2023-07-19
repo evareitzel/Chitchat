@@ -22,8 +22,7 @@ export const userSignup = createAsyncThunk('user/signup', (userInput) =>
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userInput),
   })
-    .then(r => r.json())
-    .then(newUser => newUser)
+  .then(r => r.json())
 )
 
 export const deleteUser = createAsyncThunk('user/delete', () =>
@@ -38,7 +37,7 @@ const userSlice = createSlice({
     value: null, // obj of @current_user
   },
   reducers: {},
-  // use the 'builder callback' notation
+  //// use the 'builder callback' notation ////
   extraReducers: {
     [fetchUser.fulfilled](state, action) {
       state.value = action.payload
@@ -46,7 +45,7 @@ const userSlice = createSlice({
     [userLogin.fulfilled](state, action) {
       state.value = action.payload
     },
-    [userLogout.fulfilled](state, action) { // action not used?
+    [userLogout.fulfilled](state) {
       state.value = null
     },
     [userSignup.fulfilled](state, action) {
@@ -58,12 +57,12 @@ const userSlice = createSlice({
   },
 })
 
-export const selectUser = state => {
+export const selectUser = (state) => {
   const user = state.user.value
   return user && !user.errors ? user : null
 }
 
-export const selectErrors = state => {
+export const selectErrors = (state) => {
   const user = state.user.value
   return user && user.errors ? user.errors : []
 }

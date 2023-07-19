@@ -34,7 +34,7 @@ function Group({ group }) {
       
       <ul>
         {groupMessages.map(message => (
-          <Message message={message} />
+          <Message key={message.id} message={message} />
         ))}
       </ul>
 

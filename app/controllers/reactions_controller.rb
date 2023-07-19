@@ -1,20 +1,13 @@
 class ReactionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def show
-    reaction = find_reaction
-    render json: reaction
+  def index
+    render json: Reation.all
   end
 
   def create
     reaction = Reaction.create!(reaction_params)
     render json: reaction, status: :created
-  end
-
-  def destroy
-    reaction = find_reaction
-    reaction.destroy
-    head :no_content
   end
 
   private

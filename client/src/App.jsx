@@ -16,18 +16,19 @@ function App() {
     dispatch(fetchUser())
   }, [dispatch])
 
-  console.log(useSelector(state => state))
+  // console.log(useSelector(state => state))
 
-  
-  if (!user || user.length === 0) return <Login />
+  if (!user || user.length === 0) return <Login /> // FIX to follow URL route path '/login'
 
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/groups" element={<Groups />} />
+      <Routes>      
+        <Route path="/" element={<Dashboard />} /> {/* render dashboard onLogin */}
+        <Route path="/groups/*" element={<Groups />} />
         <Route path='/login' element={<Login />} />
+        {/* <Route path='/groups/:id' element={<Group />} /> */}
+        {/* <Route /> */} {/* 5 client side routes */}
       </Routes>
     </div>
   )

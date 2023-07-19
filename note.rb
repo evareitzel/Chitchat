@@ -1273,3 +1273,248 @@ package.json (v1)
 #   //   })
 #   // }
   
+
+
+
+
+# ////////// from ReactionPicker
+
+# // import Select from 'react-select'
+
+#   // const options = [
+#   //   { value: '❤️', label: '❤️', key: '❤️' },    
+#   //   { value: '😊', label: '😊', key: '😊' },
+#   //   { value: '🔥', label: '🔥', key: '🔥' },
+#   //   { value: '🏡', label: '🏡', key: '🏡' }
+#   // ]
+
+
+# // <Select options={options} />
+
+
+
+
+
+
+# From reactionsSlice
+# //////////
+# // Setup date so it checks for presence of emoji - 
+# // emotion.any? ? emotion ++  : emotion.amount == 1  
+# // OR handle it w front-end logic to be more modular: 
+# // must be unique. filter arr for duplicates until none left or similar
+# // if emotion is present, +1 / else return emotion
+
+
+
+
+
+#     // export const fetchReactions = createAsyncThunk('reactions/fetchReactions', () => {
+# //   return fetch('/reactions')
+# //     .then(r => r.json())
+# //     .then(r => console.log(r)) // working!
+# // })
+
+#       // // GET REACTIONS
+#       // .addCase(fetchReactions.pending, (state) => {
+#       //   state.loading = true
+#       // })
+#       // .addCase(fetchReactions.fulfilled,  (state, action) => {
+#       //   state.loading = false
+#       //   state.entities = action.payload // fetch res
+
+#       //   console.log('from fetchReactions.fulfilled: ')
+#       //   console.log(state.entities) // undefined
+#       // })
+
+
+      
+
+
+# // reactionCreate res: 
+# // formData: arguments: [Exception: TypeError: 'caller]
+#     // arguments
+# // : 
+# // [Exception: TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them at Function.invokeGetter (<anonymous>:3:28)]
+# // caller
+# // : 
+# // [Exception: TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them at Function.invokeGetter (<anonymous>:3:28)]
+
+
+
+
+
+
+
+
+
+# from messageSerializer
+  # has_one :group
+  # has_one :user
+  # belongs_to :user
+  # has_many: reactions
+
+
+
+
+
+# // from Message component
+# // import { fetchReactions } from '../features/reactionsSlice'
+
+#   // const reactions = dispatch(fetchReactions())
+#   // const reactions = useSelector(state => state)
+#   // console.log(reactions)
+
+#   // useEffect(() => {
+#   //   dispatch(fetchReactions())
+#   // }, [])
+
+
+
+
+
+
+
+
+
+
+# ///////////
+# index.js =>
+# // import ReactDOM from "react-dom/client";
+
+
+
+
+
+
+
+# //// From ReactionPicker component
+
+# // import { useState } from "react"
+# // import Dropdown from 'react-dropdown'
+# // import 'react-dropdown/style.css'
+
+#   // const formData = new FormData(form)
+#   // console.log(formData)
+
+
+# // 👍😡] // Array.from('abc') // %
+# // const options = [
+# //  { value: x, key: x, id: x },
+# //  { value: x, key: x, id: x }
+# // ]
+#   // const selected = document.getElementsByName("selectedReaction")
+#     // const selected = document.getElementsByTagName("select")
+
+#   // [
+#     // console.log('selected: ')
+#     // console.log(selected)
+
+#     // emotion: e.target.value // wish it was emoji
+
+# // const reactionSelectId = useId()
+
+
+#       // {/* value={select.option} */}
+#       // id={reactionSelectId}
+
+#     // {/* <label htmlFor={reactionSelectId}> */}
+#     // {/* Add reaction: */}
+#     // {/* </label> */}
+
+#     // {/* id={reactionSelectId} */}
+
+
+
+
+#   //   <select name='selectedReaction' id='SelectorId' className='Reaction-select'>
+#   //   <option key='-' value={null}>-</option>
+#   //   {options.map(op => (
+#   //     <option id={op} key={op} value={op}>{op}</option>
+#   //   ))}
+#   // </select>
+  
+
+#     // option id - can we use array.indexOf + 1 ?
+
+
+
+
+
+
+
+
+
+
+
+
+# from Reactions Controller
+
+  # def index
+  #   render json: Reaction.all
+  # end
+
+  # def show
+  #   reaction = find_reaction
+  #   render json: reaction
+  # end
+
+  # def destroy
+  #   reaction = find_reaction
+  #   reaction.destroy
+  #   head :no_content
+  # end
+
+
+
+
+  # 🫠
+
+  # from Message component
+
+  # const tally0 = reactions.filter(r => r.emotion === r[0])
+  # const tally1 = reactions.filter(r => r.emotion === r[1])
+  # const tally2 = reactions.filter(r => r.emotion === r[2])
+  # const tally3 = reactions.filter(r => r.emotion === r[3])
+
+  # console.log(reactions)
+  # console.log(tally1)
+  # const tally = {
+  #   reactions[0]: tally0.length,
+  #   reactions[1]: tally1.length,
+  #   reactions[2]: tally2.length,
+  #   reactions[3]: tally3.length
+  # }
+
+
+
+
+
+
+
+
+  ######## from users_controller
+
+# DEV action
+  # def index
+  #   render json: User.all
+  # end
+  
+# show action
+  # user = User.find_by(id: session[:user_id])
+  # if user
+  #   render json: user
+  # else
+  #   render json: { errors: ["Not authorized"] }, status: :unauthorized
+  # end
+
+# create action
+  # if user.valid?
+  #   render json: user, status: :created
+  # else
+  #   render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+  # end
+
+
+
+
+  

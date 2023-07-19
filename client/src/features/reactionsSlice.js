@@ -6,11 +6,10 @@ const initialState = {
   errors: [],
 }
 
-
-export const fetchReactions = createAsyncThunk('reactions/fetchReactions', () => {
-  return fetch('/reactions')
-    .then(r => r.json())
-})
+export const reactionIndex = createAsyncThunk('reactions/reactionIndex', () => (
+  fetch('/reactions')
+  .then(r => r.json())
+))
 
 export const reactionCreate =
   createAsyncThunk('reactions/create', async (reaction) => {
@@ -21,7 +20,10 @@ export const reactionCreate =
       },
       body: JSON.stringify(reaction),
     })
-    return res
+
+    // console.log('res from reactionCreate: ')
+    // console.log(res)
+    return res // not returning correct response obj
   })
 
 const reactionsSlice = createSlice({
@@ -30,17 +32,14 @@ const reactionsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // GET REACTIONS
-      .addCase(fetchReactions.pending, (state) => {
-        state.loading = true
-      })
-      // .addCase(fetchReactions.fulfilled,  (state, action)
-
-      // POST REACTION
-      .addCase(reactionCreate.fulfilled, (state, action) => {
-        state.loading = false
-        state.entities = [...state.entities, action.payload]
-      })
+    .addCase(reactionIndex.fulfilled, (state, action) => {
+      state.loading = false
+      state.entities = action.payload // why isn't this populating in state reactions entities?
+    })
+    .addCase(reactionCreate.fulfilled, (state, action) => {
+      state.loading = false
+      state.entities = [...state.entities, action.payload]
+    })
   }
 })
 

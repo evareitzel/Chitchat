@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
 
-  resources :reactions, only: [:create, :show, :destroy]
+  resources :reactions, only: [:index, :create]
   resources :messages
   resources :groups, only: [:index, :show]
   resources :users, only: :index

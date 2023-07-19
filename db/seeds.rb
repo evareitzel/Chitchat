@@ -27,8 +27,8 @@ Message.create([
 
 puts "Seeding Reactions..."
 Reaction.create([
-  { emotion: '🫠', message_id: Message.first.id, user_id: User.second.id },
-  { emotion: '🤩', message_id: Message.second.id, user_id: User.first.id }
+  { emotion: '❤️', message_id: Message.first.id, user_id: User.second.id },
+  { emotion: '🤙', message_id: Message.second.id, user_id: User.first.id }
 ])
 
 puts "Done seeding! 👍"
