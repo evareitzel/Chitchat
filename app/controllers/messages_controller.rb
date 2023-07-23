@@ -24,11 +24,8 @@ class MessagesController < ApplicationController
 
   def destroy
     message = find_message
-    # byebug
     message.destroy
-    # head :no_content
-    # return json id
-    render json: message
+    render json: message # head :no_content # 
   end
 
   private

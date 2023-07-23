@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { selectUser } from '../features/userSlice'
-import { messageDestroy, selectErrors, messageRemoved } from '../features/messagesSlice'
+import { messageDestroy } from '../features/messagesSlice' // , selectErrors, messageRemoved
 import EditMessageForm from './EditMessageForm'
 import ReactionPicker from './ReactionPicker'
 
@@ -14,7 +14,7 @@ function Message({ message }) {
   const loadingState = useSelector(state => state.messages.loading)
   console.log(loadingState)
 
-  console.log(useSelector(state => state))
+  // console.log(useSelector(state => state))
 
   // try making a selectErrors func in messagesSlice and reactionsSlice
 
@@ -40,7 +40,7 @@ function Message({ message }) {
 
   const handleDeleteClick = () => {
     dispatch(messageDestroy(id))
-    // dispatch(messageRemoved(id))
+    dispatch(fetchGroups())
     // alert("Message Deleted!")
   }
 

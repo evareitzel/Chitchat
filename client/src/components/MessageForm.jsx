@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectUser } from '../features/userSlice'
 import { messageCreate } from '../features/messagesSlice'
+import { fetchGroups } from '../features/groupsSlice'
 
 function MessageForm({ group }) {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ function MessageForm({ group }) {
     }
 
     dispatch(messageCreate(message))
+    // dispatch(fetchGroups()) // update groups in dash and members in Group component
 
     setUserInput('') // Not clearing input
   }
