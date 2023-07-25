@@ -28,50 +28,23 @@ function MessageForm({ group }) {
   }
 
   return (
-    <form onSubmit={handleSubmitClick}>
-      <label>New Message
+    <form onSubmit={handleSubmitClick} className='Form'>
+      <label>
         <input
           type="text"
           name="new_message"
+          placeholder='New Message'
           onChange={e => setUserInput(e.target.value)}
-          className = "Message-input"
+          className="Input"
         />
       </label>
 
       {/* breaking app */}
       {errors.map(err => <div key={err} >x {err}</div>)}
 
-      <button type="submit">Send</button>
+      <button type="submit" className='Button'>Send</button>
     </form>
   )
 }
 
 export default MessageForm
-
-
-
-
-
-
-
-
-
-
-  // EXTRACT to messagesSlice
-  // const postMessage = (newMessage) => {
-  //   fetch('/messages', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newMessage),
-  //   }).then(r => {
-  //     if (r.ok) {
-  //       r.json()
-  //         .then((message) => message)
-  //     } else {
-  //       r.json().then(err => setErrors(err.error))
-  //     }
-  //   })
-  // }
-

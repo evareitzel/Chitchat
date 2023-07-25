@@ -41,12 +41,7 @@ export const messageDestroy = createAsyncThunk('messages/destroy', async(id) => 
     method: 'DELETE',
   })
   const message = await res.json()
-  console.log(message.group.id)
-
-  // dispatch(groups.)
   return message
-    // .then(r => r.json())
-    // .then(r => console.log(r)) // working
 })
 
 const messagesSlice = createSlice({
@@ -59,9 +54,8 @@ const messagesSlice = createSlice({
         state.loading = true
       })
       .addCase(fetchMessages.fulfilled, (state, action) => {
-        // console.log(action.payload)
         state.loading = false
-        state.entities = action.payload // fetch res - undefined
+        state.entities = action.payload // fetch resp
       })
       .addCase(messageCreate.pending, (state) => {
         state.loading = true
@@ -92,9 +86,7 @@ const messagesSlice = createSlice({
       })
       .addCase(messageDestroy.fulfilled, (state, action) => {
         state.loading = false
-        console.log(action) // undefined
         state.entities = state.entities.filter(message => message.id !== action.payload.id)
-        // dispatch(groups.)
       })
   },
 })
@@ -102,7 +94,7 @@ const messagesSlice = createSlice({
 // NOT CONFIRMED TO WORK 
 export const selectErrors = (state) => {
   const messages = state.messages.entities
-  return messages && !messages.errors ? messages : null // breaking because getting undefined resp
+  return messages && !messages.errors ? messages : null
   // return messages && messages.errors ? messages.errors : [] 
 
 }

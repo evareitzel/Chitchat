@@ -23,24 +23,21 @@ function ReactionPicker({ message }) {
   }
 
   return (
-    <span>
-      <form onSubmit={handleSubmit}>
-        <select
-          value={selectedReaction}
-          onChange={e => setSelectedReaction(e.target.value)}
-          className='Reaction-select'
-        >
-          <option>-</option>
-          {options.map(op => (
-            <option key={op} value={op}>{op}</option>
-          ))}
-        </select>
-        <button type='submit' className='Message-button'>➕</button>
+    <form onSubmit={handleSubmit} className='Reaction-picker'>
+      <select
+        value={selectedReaction}
+        onChange={e => setSelectedReaction(e.target.value)}
+        className='Reaction-select'
+      >
+        <option>-</option>
+        {options.map(op => (
+          <option key={op} value={op}>{op}</option>
+        ))}
+      </select>
+      <button type='submit' className='Message-button'>➕</button>
 
-        {/* not checked */}
-        {errors.map(err => <div key={err} >x {err}</div>)}
-      </form>
-    </span>
+      {/* {errors.map(err => <div key={err} >x {err}</div>)} */}
+    </form>
   )
 }
 

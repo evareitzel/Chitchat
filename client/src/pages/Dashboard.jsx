@@ -18,11 +18,11 @@ function Dashboard() {
           <>
             <h2>My Groups</h2>
             <ul>
-              {unique.map (groupName => <li className="li">{groupName}</li>)}
+              {unique.map (groupName => <li className="Li">{groupName}</li>)}
             </ul>
 <br />
             <h3>{user.reactions.length === 1 ? '1 reaction' : `${user.reactions.length} reactions`}</h3>
-            <p>We see you showing up! 🙌🙌💯</p>
+            {/* <p>We see you showing up! 🙌🙌💯</p> */}
           </>
         )
       }

@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectErrors, userSignup } from "../features/userSlice"
 
 function SignupForm({ setLoginSignup }) {
-  
+
   const dispatch = useDispatch()
   const errors = useSelector(selectErrors)
 
@@ -25,51 +25,51 @@ function SignupForm({ setLoginSignup }) {
     e.preventDefault()
     dispatch(userSignup(userInput))
   }
-  
+
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
+    <form onSubmit={handleSubmit} autoComplete="off" className="Form">
       <h1>Sign Up</h1>
       <p>Create your chitchat account</p>
+      
       <div>
-        <label>Username</label>
-        <input
-          type="text"
-          name="username"
-          onChange={inputOnChange}
-        />
-      </div>
-      <div>
-        <label>Password
+        <label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            onChange={inputOnChange}
+            className="Input"
+          />
+        </label>
+        <label>
           <input
             type="password"
             name="password"
+            placeholder="Password"
             onChange={inputOnChange}
+            className="Input"
           />
         </label>
-      </div>
-      <div>
-        <label>Confirm password
+        <label>
           <input
             type="password"
             name="password_confirmation"
+            placeholder="Confirm Password"
             onChange={inputOnChange}
+            className="Input"
           />
         </label>
       </div>
-      <button type="submit">Submit</button>
-      
-      <br />
-      <br />
 
       {errors.map(err => <div key={err} >x {err}</div>)}
 
-      <br />
-      <br />
-      <br />
+      <button type="submit" className="Button">Submit</button>
 
-      <div>
+      <div className="Login-signup-blurb">
         Have an account already?
-        <button onClick={() => setLoginSignup(true)}>Log in</button>
+        <br />
+        <button onClick={() => setLoginSignup(true)} className="Ghost-button">Log in</button>
+
       </div>
 
     </form>

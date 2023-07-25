@@ -20,10 +20,7 @@ export const reactionCreate =
       },
       body: JSON.stringify(reaction),
     })
-
-    // console.log('res from reactionCreate: ')
-    // console.log(res)
-    return res // not returning correct response obj
+    return res
   })
 
 const reactionsSlice = createSlice({

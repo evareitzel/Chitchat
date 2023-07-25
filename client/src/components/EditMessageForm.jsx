@@ -28,17 +28,20 @@ function EditMessageForm({ message }) {
   }
  
   return (
-    <form onSubmit={handleEditSubmit}>
-      <label>Edit Message
+    <form onSubmit={handleEditSubmit} className='Edit-message-form'>
+      <label>
+        {/* Edit Message */}
+        <br />
         <input 
           type="text"
           name="edit"
           value={userInput}
           onChange={e => setUserInput(e.target.value)}
-          className='Text-box'
+          className='Edit-message-input'
+          // 'Text-box'
         />
       </label>
-      <button type="submit">Update</button>
+      <button type="submit" className='Edit-message-button'>Update</button>
       
       {errors.map(err => <div key={err} >x {err}</div>)}
     </form>

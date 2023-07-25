@@ -8,11 +8,13 @@ function Login() {
 
   return (
     <div className="App">
-      <h3>🗪 chitchat</h3>
-      {loginSignup 
-        ? <LoginForm setLoginSignup={setLoginSignup} />
-        : <SignupForm setLoginSignup={setLoginSignup} />
-      }
+      <div className="Wrapper">
+        <h3>🗪 chitchat</h3>
+        {loginSignup 
+          ? <LoginForm setLoginSignup={setLoginSignup} />
+          : <SignupForm setLoginSignup={setLoginSignup} />
+        }
+      </div>
     </div>
   )
 }

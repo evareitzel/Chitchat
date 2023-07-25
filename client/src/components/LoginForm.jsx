@@ -27,41 +27,38 @@ function LoginForm({ setLoginSignup }) {
   }
 
   return (
-    <form onSubmit={handleLoginSubmit} autoComplete="off">
+    <form onSubmit={handleLoginSubmit} autoComplete="off" className="Form">
       <h1>Log In</h1>
       <p>Log in to your chitchat account</p>
       <div>
-        <label >Username
+        <label >
           <input
             type="text"
             name="username"
+            placeholder="Username"
             onChange={loginOnChange}
+            className="Input"
           />
         </label>
-      </div>
-      <div>
-        <label>Password
+        <label>
           <input
             type="password"
             name="password"
+            placeholder="Password"
             onChange={loginOnChange}
+            className="Input"
           />
         </label>
       </div>
-      <button type="submit">Login</button>
-
-      <br />
-      <br />
 
       {errors.map(err => <div key={err} >x {err}</div>)}
 
-      <br />
-      <br />
-      <br />
+      <button type="submit" className='Button'>Login</button>
 
-      <div>
+      <div className='Login-signup-blurb'>
         Don't have an account yet?
-        <button onClick={() => setLoginSignup(false)}>Sign up</button>
+        <br />
+        <button onClick={() => setLoginSignup(false)} className="Ghost-button">Sign up</button>
       </div>
     </form>
   )

@@ -1,31 +1,15 @@
-/* .App {
-  text-align: center; */
-/* } */
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-/* .App-header { */
-  /* .Main { */
 .App {
-  text-align: center;    
+  text-align: center;
   background-color: #222;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
   font-size: calc(8px + 2vmin);
   color: white;
-  /* padding: 20px 0 0 0; */
+}
+
+.Wrapper {
+  width: 450px;
+  padding: 20px 0 200px 0;
+  margin: auto;
 }
 
 .App-link {
@@ -35,45 +19,87 @@
   text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Button {
+  background: #BB86FC;
+  border: none;
+  border-radius: 50px;
+  color: #222;
+  font-size: calc(10px + 1vmin);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin: 20px 0 40px 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
 }
 
+.Edit-message-button {
+  background: none;
+  border: none;
+  color: #BB86FC;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: calc(6px + 1vmin);
+  font-weight: 600;
+  padding: 0 0 0 15px;
+}
 
-
-/*  */
-
-.Input {
-    /* border: none;
-    border-radius: 50px; */
-    /* background-color: #eee; */
-    width: 100%;
-    /* padding: 12px 20px;
-    margin: 8px 0; */  
+.Edit-message-input {
+  background: #fff;
+  padding: 4px;
+  border: none;
+  border-radius: 50px;
+  width: 82%;
+  padding: 12px 20px;
+  background-color: #333;
+  color: white;
 }
 
 .Ghost-button {
   text-decoration: none;
-  border: 1px solid;
+  border: 1px solid #BB86FC;
+  background: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: #BB86FC;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: calc(10px + 1vmin);
+  margin: 20px 14px 40px 14px;
+
 }
+
 /* .Errors {
   font-weight: 500;
-
 } */
+
+/* .Form { */
+  /* padding: 20px; */
+  /* width: 90%; */
+/* } */
+
+.Input {
+  border-radius: 50px;
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: solid 2px #fff;
+  background-color: #222;
+  color: white;
+}
 
 .Li {
   list-style-type: none;
 }
 
-.Message {
-  border-radius: 10px;
+.Login-signup-blurb {
+  padding: 20px 0;
+}
+
+.Message-container {
+  border-radius: 4px;
   padding: 16px;
-  margin: 20px 20px 40px 20px;
+  margin: 20px 20px 0 20px;
   outline: 1px solid;
   list-style-type: none;
   text-align: left;
@@ -84,6 +110,7 @@
   background-color: transparent;
   color: #fff;
   border-radius: 4px;
+  text-align: left;
 }
 
 .Message-input {
@@ -93,17 +120,20 @@
 .Sender {
   color: #999;
   text-align: right;
+  /* */
   font-style: italic;
   font-size: 13px;
-  margin: 5px 20px 20px 40px;
+  margin: 5px 20px 5px 40px;
 }
 
 .Text-box {
-  border-radius:  4px;
+  border-radius: 4px;
   border: 1px solid #fff;
-  /* height: 40px; */
-  /* background: none; */
-  /* rows: 4; */
+}
+
+.Reaction-picker {
+  text-align: right;
+  margin: 0 20px 25px 0;
 }
 
 .Reaction-select {

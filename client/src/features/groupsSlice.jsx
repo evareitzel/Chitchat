@@ -5,6 +5,11 @@ export const fetchGroups = createAsyncThunk('groups/fetchGroups', () => {
   .then(r => r.json())
 })
 
+export const groupShow = createAsyncThunk('groups/show', (id) => {
+  return fetch(`/groups/${id}`)
+  .then(r => r.json())
+})
+
 const groupsSlice = createSlice({
   name: 'groups',
   initialState: {
