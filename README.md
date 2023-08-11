@@ -1,5 +1,10 @@
 # Project Template: React/Rails API
 
+Phase 5 Capstone Project for Flatiron School
+
+A Collaborative Messaging App
+
+
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails
